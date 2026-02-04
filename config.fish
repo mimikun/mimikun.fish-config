@@ -1,3 +1,7 @@
-abbr --add vim nvim
+source ~/.config/fish/config/env_paths.fish
+source ~/.config/fish/config/aliases.fish
+source ~/.config/fish/config/abbreviations.fish
+source ~/.config/fish/config/initialize.fish
 
-source ~/.config/fish/config.fish.temp
+# vim:ft=fish
+
