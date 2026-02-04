@@ -1,0 +1,19 @@
+[default.extend-words]
+# completions/srgn.fish
+# `Hashi` is `HashiCorp`
+Hashi = "Hashi"
+
+# completions/starship.fish
+# `mis`. is `mis-handle`
+mis = "mis"
+
+[files]
+extend-exclude = [
+  # DO NOT expect an upstream fix
+  "completions/deno.fish",
+  "completions/hx.fish",
+  "completions/sake.fish",
+  #"completions/srgn.fish",
+  # This is abbr
+  #"config.fish",
+]

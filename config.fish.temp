@@ -1,0 +1,560 @@
+# Global
+set -x LANG "en_US.UTF-8"
+set -x LC_ALL "en_US.UTF-8"
+set -x GHQ_ROOT $HOME/ghq
+set -x GHQ_SELECTOR fzf
+set -x PIPENV_VENV_IN_PROJECT 1
+set -x TODAY (date +"%Y/%m/%d")
+set -x TZ "Asia/Tokyo"
+
+# shell prompts
+# "oh-my-posh", "starship", "tide", "hydro", pure-fish"
+set -x USE_SHELL_PROMPT "starship"
+
+# neovim version manager
+# "nvs", "bob"
+set -x USE_NVIM_VERSION_MANAGER "bob"
+
+# XDG Base Directory
+set -x XDG_CONFIG_HOME $HOME/.config
+set -x XDG_CACHE_HOME $HOME/.cache
+set -x XDG_DATA_HOME $HOME/.local/share
+set -x XDG_STATE_HOME $HOME/.local/state
+
+# Fish paths
+set -x FISH_CONFIG_DIR $XDG_CONFIG_HOME/fish
+set -x FISH_COMPLETIONS_DIR $FISH_CONFIG_DIR/completions
+set -x FISH_FUNCTIONS_DIR $FISH_CONFIG_DIR/functions
+set -x FISH_CACHE_DIR $XDG_CACHE_HOME/fish
+
+set -x CONFIG_FISH $FISH_CONFIG_DIR/config.fish
+set -x CACHE_CONFIG_FISH $FISH_CACHE_DIR/config.fish
+
+set -x BROWSER "wsl-open"
+
+# env-vars
+# GITHUB_USERNAME
+set -x GITHUB_USERNAME "mimikun"
+
+# WIN_HOME
+set -x WIN_HOME "/mnt/c/Users/mimikun"
+
+# OBSIDIAN_VAULT_ROOT
+set -x OBSIDIAN_VAULT_ROOT "Obsidian/mimikun"
+
+# LG_CONFIG_FILE
+set -x LG_CONFIG_FILE "$XDG_CONFIG_HOME/lazygit/wsl_config.yml"
+
+set -x WORKSPACE "$GHQ_ROOT/github.com/$GITHUB_USERNAME"
+set -x WORKSPACE_MIMIKUN "$GHQ_ROOT/github.com/mimikun"
+set -x NVIM_DEV_PLUGINS "$WORKSPACE_MIMIKUN/dev-plugins"
+
+set -x windl "$WIN_HOME/Downloads"
+set -x WIN_DESKTOP "$WIN_HOME/Desktop"
+set -x WIN_DOCUMENTS "$WIN_HOME/Documents"
+set -x obsidian_vault_root_path "$WIN_DOCUMENTS/$OBSIDIAN_VAULT_ROOT"
+set -x DISPLAY ":0"
+
+set -x obsidian_vault_path $obsidian_vault_root_path
+set -x obsidian_dailynote_path $obsidian_vault_path/001_DailyNotes
+set -x obsidian $obsidian_dailynote_path
+set dailynote_slug (date +"%Y年%m月%d日")
+set -x today_dailynote "$obsidian_dailynote_path/$dailynote_slug.md"
+
+set -x CHEZMOI_DIR "$XDG_DATA_HOME/chezmoi"
+
+set -x LOCALBIN $HOME/.local/bin
+
+set -x PATH /usr/bin $PATH
+set -x PATH /usr/local/bin $PATH
+set -x PATH /usr/local/sbin $PATH
+set -x PATH $HOME/go/bin $PATH
+set -x PATH $HOME/.cargo/bin $PATH
+set -x PATH $HOME/.local/bin $PATH
+
+set -x DENO_INSTALL $HOME/.deno
+set -x PATH $DENO_INSTALL/bin $PATH
+
+# starship
+set -x STARSHIP_CONFIG_DIR $XDG_CONFIG_HOME/starship
+set -x STARSHIP_CONFIG $STARSHIP_CONFIG_DIR/starship.toml
+set -x STARSHIP_CACHE $XDG_CACHE_HOME/starship
+
+# tide
+set -x TIDE_STYLE 'Classic'
+set -x TIDE_PROMPT_COLORS 'True color'
+set -x TIDE_CLASSIC_PROMPT_COLOR 'Light'
+set -x TIDE_SHOW_TIME '24-hour format'
+set -x TIDE_CLASSIC_PROMPT_SEPARATORS 'Angled'
+set -x TIDE_POWERLINE_PROMPT_HEADS 'Round'
+set -x TIDE_POWERLINE_PROMPT_TAILS 'Round'
+set -x TIDE_POWERLINE_PROMPT_STYLE 'Two lines, character'
+set -x TIDE_PROMPT_CONNECTION 'Disconnected'
+set -x TIDE_POWERLINE_RIGHT_PROMPT_FRAME 'No'
+set -x TIDE_PROMPT_CONNECTION_ANDOR_FRAME_COLOR 'Light'
+set -x TIDE_PROMPT_SPACING 'Sparse'
+set -x TIDE_ICONS 'Many icons'
+set -x TIDE_TRANSIENT 'No'
+
+# bob-nvim
+set -x BOB_CONFIG $XDG_CONFIG_HOME/bob/config.toml
+
+# nvs
+set -x NVS_BIN_DIR $XDG_DATA_HOME/nvs/bin
+
+#Ubuntu
+set -x PATH /bin $PATH
+set -x PATH /usr/games $PATH
+set -x PATH /usr/sbin $PATH
+set -x PATH /usr/local/games $PATH
+set -x PATH /sbin $PATH
+set -x PATH /snap/bin $PATH
+set -x PATH $HOME/.fzf/bin $PATH
+set -x PATH $HOME/.local/bin/ $PATH
+set -x PATH $HOME/.npm-global/bin $PATH
+set -x PATH $HOME/.dotnet/tools/ $PATH
+set -x PATH $HOME/.gem/ruby/2.7.0/bin/ $PATH
+set -x PATH $HOME/depot_tools $PATH
+set -x PATH /usr/local/go/bin/ $PATH
+
+set -x EDITOR nvim
+set -x LESS "-R"
+set -x LESSCHARSET "utf-8"
+set -x PAGER less
+set -x GIT_PAGER less
+
+# Bun
+set -x BUN_INSTALL $HOME/.bun
+set -x PATH $BUN_INSTALL/bin $PATH
+
+# fly.io
+set -x FLYCTL_INSTALL $HOME/.fly
+set -x PATH $FLYCTL_INSTALL/bin $PATH
+
+# pnpm
+set -x PNPM_HOME $XDG_DATA_HOME/pnpm
+set -x PATH "$PNPM_HOME" $PATH
+
+# cabal config
+set -x PATH $HOME/.cabal/bin $PATH
+set -x PATH $HOME/.ghcup/bin $PATH
+
+# https://github.com/antfu/ni config
+if command -v ni >/dev/null 2>&1
+    set -x NI_CONFIG_FILE $XDG_CONFIG_HOME/ni/.nirc
+end
+
+# codon config
+if command -v codon >/dev/null 2>&1
+    set -x PATH $HOME/.codon/bin $PATH
+end
+
+# Rye
+set -x PATH $HOME/.rye/shims $PATH
+
+# luarocks
+set -x PATH $HOME/.luarocks/bin $PATH
+
+set -x LUA_PATH "/usr/local/share/lua/5.3/?.lua"
+set -x LUA_PATH "/usr/local/share/lua/5.3/?/init.lua" $LUA_PATH
+set -x LUA_PATH "/usr/local/lib/lua/5.3/?.lua" $LUA_PATH
+set -x LUA_PATH "/usr/local/lib/lua/5.3/?/init.lua" $LUA_PATH
+set -x LUA_PATH "./?.lua" $LUA_PATH
+set -x LUA_PATH "./?/init.lua" $LUA_PATH
+set -x LUA_PATH "$HOME/.luarocks/share/lua/5.3/?.lua" $LUA_PATH
+set -x LUA_PATH "$HOME/.luarocks/share/lua/5.3/?/init.lua" $LUA_PATH
+
+set -x LUA_CPATH "/usr/local/lib/lua/5.3/?.so"
+set -x LUA_CPATH "/usr/local/lib/lua/5.3/loadall.so" $LUA_CPATH
+set -x LUA_CPATH "./?.so" $LUA_CPATH
+set -x LUA_CPATH "$HOME/.luarocks/lib/lua/5.3/?.so" $LUA_CPATH
+
+# dotnet-core completions
+if command -v dotnet >/dev/null 2>&1
+    complete -f -c dotnet -a "(dotnet complete)"
+end
+
+# aqua
+set -x AQUA_ROOT_DIR $XDG_DATA_HOME/aqua
+set -x AQUA_CONFIG_DIR $XDG_CONFIG_HOME/aqua/
+set -x AQUA_BIN $AQUA_ROOT_DIR/bin
+
+set -x PATH $AQUA_BIN $PATH
+
+set -x AQUA_CONFIG $AQUA_CONFIG_DIR/aqua.yaml
+set -x AQUA_GLOBAL_CONFIG $AQUA_CONFIG
+set -x AQUA_POLICY_CONFIG $AQUA_CONFIG_DIR/policy.yaml
+# If true, Policy is disabled
+# NOTE: It's just idiot to care about security.
+set -x AQUA_DISABLE_POLICY true
+# The maximum number of packages which are installed in parallel at the same time
+set -x AQUA_MAX_PARALLELISM 1
+set -x AQUA_PROGRESS_BAR true
+
+# inshellisense
+if test -f "$HOME/.inshellisense/key-bindings.fish"
+    source "$HOME/.inshellisense/key-bindings.fish"
+end
+
+# PHP composer
+set -x COMPOSER_CONFIG_HOME $XDG_CONFIG_HOME/composer
+set -x COMPOSER_BIN_DIR $COMPOSER_CONFIG_HOME/vendor/bin
+
+set -x PATH $COMPOSER_BIN_DIR $PATH
+
+# Julia
+set -x PATH "$HOME/.juliaup/bin" $PATH
+
+# mocword dict
+set -x MOCWORD_DATA "$XDG_CACHE_HOME/mocword.sqlite"
+
+# Neovide env-vars
+## Functionality
+### Frame
+#set -x NEOVIDE_FRAME "full"
+#set -x NEOVIDE_FRAME "none"
+# macOS Only
+#set -x NEOVIDE_FRAME "transparent"
+# macOS Only
+#set -x NEOVIDE_FRAME "buttonless"
+
+### Maximized
+# NOTE: not documented
+#set -x NEOVIDE_MAXIMIZED true
+
+### Multigrid
+# NOTE: not documented
+#set -x NEOVIDE_NO_MULTIGRID true
+
+### Fork
+#set -x NEOVIDE_FORK 0
+
+### No Idle
+#set -x NEOVIDE_IDLE 0
+
+### Title
+# macOS Only
+# NOTE: not documented
+#set -x NEOVIDE_TITLE_HIDDEN false
+
+### sRGB
+#set -x NEOVIDE_SRGB 0
+
+### Tabs
+#set -x NEOVIDE_TABS 0
+
+### No VSync
+#set -x NEOVIDE_VSYNC 0
+
+### Neovim Binary
+#set -x NEOVIM_BIN "/path/to/nvim"
+
+### Wayland / X11
+# Linux Only
+# NOTE: Incomprehensible
+#set -x NEOVIDE_APP_ID "wayland_app_id"
+#set -x NEOVIDE_WM_CLASS_INSTANCE "x11_wm_class_instance"
+#set -x NEOVIDE_WM_CLASS "x11_wm_class"
+
+# nimble
+set -x PATH $HOME/.nimble/bin $PATH
+
+# age public keys
+set -x AGE_PUBKEY_HOME "age1cktdwc8u4z76kawluyswaruyeg7eg6078rw3t0kkmx5wqkk40d2qzajn8y"
+set -x AGE_PUBKEY_WORK "age1n03v0casqk2djs2jw3xq5ldpdjtp2s6r0u3uhtmd7zv9j2xuyf6qpl9x7l"
+
+# golang
+set -x GOPATH $HOME/go
+set -x GOBIN $GOPATH/bin
+set -x PATH $GOBIN $PATH
+
+# zettelkasten
+set -x zettelkasten_root "$GHQ_ROOT/codeberg.org/mimikun/zettelkasten"
+
+# forgit
+set -x PATH $FISH_CONFIG_DIR/conf.d/bin $PATH
+set -x FORGIT_NO_ALIASES true
+
+# Claude Desktop
+set -x CLAUDE_DESKTOP_PATH $WIN_HOME/AppData/Roaming/Claude.json
+set -x CLAUDE_DESKTOP_CONFIG $CLAUDE_DESKTOP_PATH/claude_desktop_config.json
+
+# depot
+set -x DEPOT_INSTALL_DIR "$HOME/.depot/bin"
+set -x PATH "$DEPOT_INSTALL_DIR" $PATH
+
+## aliases
+alias rm "rm -i"
+alias mkdir "mkdir -p"
+alias untar "tar xvf"
+alias patch "patch -p1 <"
+alias imgcat "wezterm imgcat"
+alias pip "python3 -m pip"
+alias pipx "python3 -m pipx"
+
+## abbrs
+# disable sudo rm
+abbr --add --command sudo rm 'echo "sudo rm は使用禁止"'
+
+# pueued.service manage shortcuts
+abbr --add pueued_enable "systemctl --user enable pueue"
+abbr --add pueued_start "systemctl --user start pueue"
+abbr --add pueued_restart "systemctl --user restart pueue"
+
+# chezmoi abbrs
+if command -v chezmoi >/dev/null 2>&1
+    abbr --add ccd "chezmoi cd"
+    abbr --add chd "chezmoi cd"
+    abbr --add chec "chezmoi cd"
+    abbr --add cap "chezmoi apply"
+    abbr --add chp "chezmoi apply"
+    abbr --add chep "chezmoi apply"
+end
+
+# pueue abbrs
+if command -v pueue >/dev/null 2>&1
+    abbr --add pu pueue
+    abbr --add puc "pueue clean -s"
+    abbr --add pucf "pueue clean"
+    abbr --add puf "pueue follow"
+    abbr --add pul "pueue log"
+    abbr --add pum "pueue | more"
+    abbr --add puq "pueue enqueue"
+end
+
+# trashy abbrs
+if command -v trashy >/dev/null 2>&1
+    abbr --add trash "trashy"
+end
+
+# gh cli abbrs
+if command -v gh >/dev/null 2>&1
+    abbr --add ghview "gh repo view -w"
+    abbr --add ghissue "gh issue ls"
+end
+
+# rage abbrs
+if command -v rage >/dev/null 2>&1
+    abbr --add ragee "rage -e -r $AGE_PUBKEY"
+    abbr --add raged "rage -d -i ~/.age/key.txt"
+end
+
+# ls abbrs
+## eza
+# TODO: config now
+if command -v eza >/dev/null 2>&1
+    abbr --add ls "eza --color=always --icons=always --group-directories-first"
+    abbr --add la "eza --color=always --icons=always --group-directories-first --all"
+    abbr --add l1 "eza --color=always --icons=always --group-directories-first --oneline"
+
+    abbr --add ll "eza --color=always --icons=always --group-directories-first --long --header"
+    abbr --add lla "eza --color=always --icons=always --group-directories-first --long --header --all"
+    abbr --add ll1 "eza --color=always --icons=always --group-directories-first --long --header --oneline"
+
+    abbr --add lt "eza --color=always --icons=always --group-directories-first --tree"
+    abbr --add lta "eza --color=always --icons=always --group-directories-first --tree --all"
+    abbr --add lt1 "eza --color=always --icons=always --group-directories-first --tree --oneline"
+    abbr --add llt "eza --color=always --icons=always --group-directories-first --tree --long --header"
+end
+
+## lla
+# TODO: config now
+#if command -v lla >/dev/null 2>&1
+#    abbr --add ls "lla --icons --sort-dirs-first --grid --no-dotfiles"
+#    abbr --add la "lla --icons --sort-dirs-first --grid"
+#    abbr --add l1 "lla --icons --sort-dirs-first --no-dotfiles"
+#
+#    abbr --add ll "lla --icons --sort-dirs-first --grid --no-dotfiles --long"
+#    abbr --add lla "lla --icons --sort-dirs-first --grid --long"
+#    abbr --add ll1 "lla --icons --sort-dirs-first --long"
+#
+#    abbr --add lt "lla --icons --sort-dirs-first --no-dotfiles --tree"
+#    abbr --add lta "lla --icons --sort-dirs-first --tree"
+#    abbr --add lt1 "lla --icons --sort-dirs-first --no-dotfiles --tree"
+#    abbr --add llt "lla --icons --sort-dirs-first --no-dotfiles --long --tree"
+#
+#    #Use table listing format
+#    #--table
+#    #Organized grid layout you can use `-g --grid-ignore` to ignore terminal width (Warning: may extend beyond screen)
+#    #--grid
+#    #Visual representation of file sizes
+#    #--sizemap
+#    #Group files by time periods
+#    #--timeline
+#    #Show git status and information
+#    #--git
+#    #Interactive fuzzy finder (Experimental)
+#    #--fuzzy
+#end
+
+## lsd
+# TODO: config now
+#if command -v lsd >/dev/null 2>&1
+#    abbr --add ls "lsd --color=always --icons=always --group-dirs=first"
+#    abbr --add la "lsd --color=always --icons=always --group-dirs=first --all"
+#    abbr --add l1 "lsd --color=always --icons=always --group-dirs=first --oneline"
+#
+#    abbr --add ls "lsd --color=always --icons=always --group-dirs=first --long --header"
+#    abbr --add lla "lsd --color=always --icons=always --group-dirs=first --long --header --all"
+#    abbr --add ll1 "lsd --color=always --icons=always --group-dirs=first --long --header --oneline"
+#
+#    abbr --add lt "lsd --color=always --icons=always --group-dirs=first --tree"
+#    abbr --add lta "lsd --color=always --icons=always --group-dirs=first --tree --all"
+#    abbr --add lt1 "lsd --color=always --icons=always --group-dirs=first --tree --oneline"
+#    abbr --add llt "lsd --color=always --icons=always --group-dirs=first --tree --long --header"
+#end
+
+# git subcommands(abbr)
+abbr --add --command git ls 'ls-files'
+abbr --add --command git graph 'log-graph'
+abbr --add --command git file-diff 'diff --name-only'
+abbr --add --command git empty 'commit --allow-empty -nm'
+abbr --add --command git commitn 'commit -nm'
+abbr --add --command git commitan 'commit -anm'
+abbr --add --command git amecomi 'commit --amend'
+abbr --add --command git amecomin 'commit --amend --no-verify'
+abbr --add --command git namecomi 'commit --amend --no-edit'
+abbr --add --command git namecomin 'commit --amend --no-edit --no-verify'
+abbr --add --command git cleanfetch 'fetch --all --prune --tags --prune-tags'
+abbr --add --command git hash 'log --format=%H | sed -n 1p'
+abbr --add --command git shallow-clone 'clone --depth 1'
+abbr --add --command git staged 'diff --cached'
+
+# emacs from CLI abbrs
+abbr --add emacs "emacs --no-window-system"
+
+# util abbrs
+abbr --add mmo "make morning-routine"
+
+# https://github.com/ryoppippi/na.fish
+abbr --add n -f _na
+
+# forgejo-cli
+abbr --add cb "fj --host codeberg.org"
+
+# zellij abbrs
+abbr --add zel zellij
+
+# WSL only abbrs
+abbr --add open wsl-open
+
+# Linuxbrew
+if command -v brew >/dev/null 2>&1
+    /home/linuxbrew/.linuxbrew/bin/brew shellenv fish | source
+end
+
+# mise config
+if command -v mise >/dev/null 2>&1
+    mise activate fish | source
+    alias paleovim "$XDG_DATA_HOME/mise/installed/vim/ref-master/vim"
+    abbr --add pvim paleovim
+end
+
+# NOTE: neovim version manager
+# bob-nvim
+if command -v bob >/dev/null 2>&1
+    if test "$USE_NVIM_VERSION_MANAGER" = "bob"
+        set -x PATH "$XDG_DATA_HOME/bob/nvim-bin" $PATH
+    end
+end
+
+# nvs
+if command -v nvs >/dev/null 2>&1
+    if test "$USE_NVIM_VERSION_MANAGER" = "nvs"
+        set -x PATH "$NVS_BIN_DIR" $PATH
+    end
+end
+
+abbr --add vim nvim
+
+# NOTE: shell prompt
+# starship
+if command -v starship >/dev/null 2>&1
+    if test "$USE_SHELL_PROMPT" = "starship"
+        starship init fish --print-full-init | source
+    end
+end
+
+# oh-my-posh
+if command -v oh-my-posh >/dev/null 2>&1
+    if test "$USE_SHELL_PROMPT" = "oh-my-posh"
+        oh-my-posh init fish --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/tokyonight_storm.omp.json' | source
+    end
+end
+
+# rebar3
+if command -v rebar3 >/dev/null 2>&1
+    set -x PATH "$XDG_CACHE_HOME/rebar3/bin" $PATH
+end
+
+# pay-respects
+if command -v pay-respects >/dev/null 2>&1
+    pay-respects fish --alias | source
+end
+
+# jujutsu
+if command -v jj >/dev/null 2>&1
+    jj util completion fish | source
+end
+
+# go-task
+if command -v task >/dev/null 2>&1
+    task --completion fish | source
+end
+
+# jump
+if command -v jump >/dev/null 2>&1
+    jump shell fish | source
+end
+
+# wtp
+if command -v wtp >/dev/null 2>&1
+    wtp shell-init fish | source
+end
+
+# handler
+if command -v handler >/dev/null 2>&1
+    _HANDLER_COMPLETE=fish_source handler | source
+end
+
+# worktrunk
+if command -v wt >/dev/null 2>&1
+    wt config shell init fish | source
+end
+
+# git-wt
+if command -v git-wt >/dev/null 2>&1
+    git wt --init fish | source
+end
+
+# BUG: WORKAROUND atuin and fish 4.1.0 bug
+# thx: https://github.com/atuinsh/atuin/issues/2803#issuecomment-3402340878
+atuin init fish | sed "s/bind -M insert -k up _atuin_bind_up/bind -M insert up _atuin_bind_up/" | source
+
+#test ! -e "$HOME/.x-cmd.root/local/data/fish/rc.fish" || source "$HOME/.x-cmd.root/local/data/fish/rc.fish" # boot up x-cmd.
+
+# TODO: WORK IN PROGRESS
+# If you can enable zeno feature, run `set -Ux USE_ZENO true`
+# disable zeno feature, run `set -e USE_ZENO`
+if set -q USE_ZENO
+    if test "$ZENO_LOADED" = "1"
+        bind space zeno-auto-snippet
+        bind -M insert space zeno-auto-snippet
+        bind \r zeno-auto-snippet-and-accept-line
+        bind -M insert \r zeno-auto-snippet-and-accept-line
+        bind \t zeno-completion
+        bind -M insert \t zeno-completion
+        bind \cx\x20 zeno-insert-space
+        bind -M insert \cx\x20 zeno-insert-space
+    end
+end
+
+# NOTE: NEED end of config file!
+# see: https://github.com/ajeetdsouza/zoxide#installation
+zoxide init fish | source
+
+# nix activate script
+source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
+set -x PATH $HOME/.nix-profile/bin $PATH
+
+# vim:ft=fish

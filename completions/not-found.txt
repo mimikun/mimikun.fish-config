@@ -1,0 +1,10 @@
+bin: not found
+nvs: not found
+rye: not found
+brew: not found
+fish-lsp: not found
+codex: not found
+foot: not found
+nb: not found
+footclient: not found
+qsv: not found

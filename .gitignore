@@ -1,0 +1,31 @@
+# completions
+completions/bd.fish
+completions/git-forgit.fish
+completions/gitignore.fish
+completions/nkf.fish
+completions/spin.fish
+
+# functions
+functions/__ghq_repository_search.fish
+functions/_evalcache.fish
+functions/_evalcache_clear.fish
+functions/_na.fish
+functions/bd.fish
+functions/cute.fish
+functions/gcd.fish
+functions/getopts.fish
+functions/gitignore.fish
+functions/spin.fish
+
+# themes
+themes/*
+!themes/.keep
+!themes/default.theme
+
+# conf.d
+conf.d/forgit.plugin.fish
+conf.d/gh-copilot-cli-alias.fish
+conf.d/ghq_key_bindings.fish
+
+# other
+fish_variables
