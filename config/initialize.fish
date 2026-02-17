@@ -72,6 +72,11 @@ if command -q git-wt
   git wt --init fish | source
 end
 
+# atuin
+if command -q atuin
+  atuin init fish | source
+end
+
 # x-cmd
 if test -f "$HOME/.x-cmd.root/local/data/fish/rc.fish"
   source "$HOME/.x-cmd.root/local/data/fish/rc.fish"
@@ -103,11 +108,6 @@ else
   set -gx PATH $HOME/.nix-profile/bin $PATH
 end
 #{{ end -}}
-
-# TODO: WORK IN PROGRESS
-# BUG: WORKAROUND atuin and fish 4.1.0 bug
-# thx: https://github.com/atuinsh/atuin/issues/2803#issuecomment-3402340878
-atuin init fish | sed "s/bind -M insert -k up _atuin_bind_up/bind -M insert up _atuin_bind_up/" | source
 
 # TODO: WORK IN PROGRESS
 # NOTE: NEED end of config file!
