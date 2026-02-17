@@ -72,13 +72,10 @@ if command -q git-wt
   git wt --init fish | source
 end
 
-# TODO: WORK IN PROGRESS
-# BUG: WORKAROUND atuin and fish 4.1.0 bug
-# thx: https://github.com/atuinsh/atuin/issues/2803#issuecomment-3402340878
-atuin init fish | sed "s/bind -M insert -k up _atuin_bind_up/bind -M insert up _atuin_bind_up/" | source
-
-# TODO: WORK IN PROGRESS
-#test ! -e "$HOME/.x-cmd.root/local/data/fish/rc.fish" || source "$HOME/.x-cmd.root/local/data/fish/rc.fish" # boot up x-cmd.
+# x-cmd
+if test -f "$HOME/.x-cmd.root/local/data/fish/rc.fish"
+  source "$HOME/.x-cmd.root/local/data/fish/rc.fish"
+end
 
 # TODO: WORK IN PROGRESS
 # If you can enable zeno feature, run `set -Ux USE_ZENO true`
@@ -96,21 +93,26 @@ if set -q USE_ZENO
   end
 end
 
-# TODO: WORK IN PROGRESS
-# NOTE: NEED end of config file!
-# see: https://github.com/ajeetdsouza/zoxide#installation
-zoxide init fish | source
-
-# nix activate script
-source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
-set -gx PATH $HOME/.nix-profile/bin $PATH
-
 # TODO: it
 #{{ if (isExecutable "/usr/local/bin/this_is_work_pc") -}}
 if command -q this_is_work_pc
   #cat $XDG_CONFIG_HOME/{{ (rbwFields "dotfiles-chezmoi").source_work_pc_only_tool_fish_1.value }} | source
+else
+  # nix activate script
+  source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
+  set -gx PATH $HOME/.nix-profile/bin $PATH
 end
 #{{ end -}}
+
+# TODO: WORK IN PROGRESS
+# BUG: WORKAROUND atuin and fish 4.1.0 bug
+# thx: https://github.com/atuinsh/atuin/issues/2803#issuecomment-3402340878
+atuin init fish | sed "s/bind -M insert -k up _atuin_bind_up/bind -M insert up _atuin_bind_up/" | source
+
+# TODO: WORK IN PROGRESS
+# NOTE: NEED end of config file!
+# see: https://github.com/ajeetdsouza/zoxide#installation
+zoxide init fish | source
 
 # vim:ft=fish
 
