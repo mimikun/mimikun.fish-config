@@ -109,9 +109,7 @@ else
 end
 #{{ end -}}
 
-# TODO: WORK IN PROGRESS
-# NOTE: NEED end of config file!
-# see: https://github.com/ajeetdsouza/zoxide#installation
+# zoxide
 zoxide init fish | source
 
 # vim:ft=fish
