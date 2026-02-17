@@ -39,17 +39,14 @@ set -gx CACHE_CONFIG_FISH $FISH_CACHE_DIR/config.fish
 
 # Linux Laptop config
 if test "$HOST_NAME" = "azusa"
-#{{ if (eq .chezmoi.hostname "azusa") -}}
   set -gx GTK_IM_MODULE "fcitx"
   set -gx QT_IM_MODULE "fcitx"
   set -gx XMODIFIERS "@im=fcitx"
   setxkbmap -option ctrl:nocaps # CapsLock to Ctrl
   set -gx BROWSER "vivaldi"
 else
-#{{ else -}}
   set -gx BROWSER "wsl-open"
 end
-#{{ end -}}
 
 ## env-vars
 
@@ -89,30 +86,24 @@ end
 
 # LG_CONFIG_FILE
 if test "$HOST_NAME" = "azusa"
-#{{ if (eq .chezmoi.hostname "azusa") -}}
   set -gx LG_CONFIG_FILE "$XDG_CONFIG_HOME/lazygit/linux_config.yml"
 else
-#{{ else -}}
   set -gx LG_CONFIG_FILE "$XDG_CONFIG_HOME/lazygit/wsl_config.yml"
 end
-#{{ end -}}
 
 set -gx WORKSPACE "$GHQ_ROOT/github.com/$GITHUB_USERNAME"
 set -gx WORKSPACE_MIMIKUN "$GHQ_ROOT/github.com/mimikun"
 set -gx NVIM_DEV_PLUGINS "$WORKSPACE_MIMIKUN/dev-plugins"
 
 if test "$HOST_NAME" = "azusa"
-#{{ if (eq .chezmoi.hostname "azusa") -}}
   set -gx obsidian_vault_root_path "$HOME/Documents/$OBSIDIAN_VAULT_ROOT"
 else
-#{{ else -}}
   set -gx windl "$WIN_HOME/Downloads"
   set -gx WIN_DESKTOP "$WIN_HOME/Desktop"
   set -gx WIN_DOCUMENTS "$WIN_HOME/Documents"
   set -gx obsidian_vault_root_path "$WIN_DOCUMENTS/$OBSIDIAN_VAULT_ROOT"
   set -gx DISPLAY ":0"
 end
-#{{ end -}}
 
 # some services PATs
 if command -q this_is_work_pc
@@ -281,8 +272,6 @@ set -gx PATH "$HOME/.juliaup/bin" $PATH
 # mocword dict
 set -gx MOCWORD_DATA "$XDG_CACHE_HOME/mocword.sqlite"
 
-# Neovide env-vars
-
 # nimble
 set -gx PATH $HOME/.nimble/bin $PATH
 
@@ -341,6 +330,8 @@ if command -q zoxide
   # When set to 1, `z` will resolve symlinks before adding directories to the database.
   #set -gx _ZO_RESOLVE_SYMLINKS 1
 end
+
+# Neovide env-vars
 
 # vim:ft=fish
 
