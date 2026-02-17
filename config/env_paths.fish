@@ -325,5 +325,22 @@ else
 end
 #{{ end -}}
 
+# zoxide
+if command -q zoxide
+  # Linux/BSD
+  set -gx _ZO_DATA_DIR "$XDG_DATA_HOME"
+  # macOS
+  #"$HOME/Library/Application Support"
+  # When set to 1, `z` will print the matched directory before navigating to it.
+  #set -gx _ZO_ECHO 1
+  set -gx _ZO_EXCLUDE_DIRS "$HOME:$HOME/go/*"
+  # Custom options to pass to [fzf] during interactive selection. See [`man fzf`][fzf-man] for the list of options.
+  #set -gx _ZO_FZF_OPTS
+  # Configures the [aging algorithm][algorithm-aging], which limits the maximum number of entries in the database.
+  set -gx _ZO_MAXAGE 10000
+  # When set to 1, `z` will resolve symlinks before adding directories to the database.
+  #set -gx _ZO_RESOLVE_SYMLINKS 1
+end
+
 # vim:ft=fish
 
