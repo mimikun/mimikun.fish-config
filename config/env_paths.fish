@@ -160,13 +160,13 @@ if test "$USE_SHELL_PROMPT" = "tide"
 end
 
 # bob-nvim
-if test "$USE_SHELL_PROMPT" = "bob"
+if test "$USE_NVIM_VERSION_MANAGER" = "bob"
   set -gx PATH "$XDG_DATA_HOME/bob/nvim-bin" $PATH
   set -gx BOB_CONFIG $XDG_CONFIG_HOME/bob/config.toml
 end
 
 # nvs
-if test "$USE_SHELL_PROMPT" = "nvs"
+if test "$USE_NVIM_VERSION_MANAGER" = "nvs"
   set -gx PATH "$NVS_BIN_DIR" $PATH
   set -gx NVS_BIN_DIR $XDG_DATA_HOME/nvs/bin
 end
