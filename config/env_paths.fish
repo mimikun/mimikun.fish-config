@@ -333,5 +333,16 @@ end
 
 # Neovide env-vars
 
+# Claude Code
+# WORKAROUND: Claude Code with WSL2 BUG
+if command -q claude
+  set -gx CLAUDE_CODE_SKIP_WINDOWS_PROFILE 1
+  if command -q this_is_work_pc
+    #set -gx USERPROFILE "/mnt/c/Users/USER_NAME"
+  else
+    set -gx USERPROFILE "/mnt/c/Users/mimikun"
+  end
+end
+
 # vim:ft=fish
 
