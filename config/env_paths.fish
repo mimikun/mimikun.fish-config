@@ -305,6 +305,9 @@ end
 # opencode
 set -gx PATH "$HOME/.opencode/bin" $PATH
 
+# kubectl krew
+set -gx PATH "$HOME/.krew/bin" $PATH
+
 # age public keys
 set -gx AGE_PUBKEY_HOME "age1cktdwc8u4z76kawluyswaruyeg7eg6078rw3t0kkmx5wqkk40d2qzajn8y"
 set -gx AGE_PUBKEY_WORK "age1n03v0casqk2djs2jw3xq5ldpdjtp2s6r0u3uhtmd7zv9j2xuyf6qpl9x7l"
