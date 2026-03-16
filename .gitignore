@@ -26,6 +26,7 @@ themes/*
 conf.d/forgit.plugin.fish
 conf.d/gh-copilot-cli-alias.fish
 conf.d/ghq_key_bindings.fish
+conf.d/vite-plus.fish
 
 # other
 fish_variables
