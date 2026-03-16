@@ -139,6 +139,10 @@ if command -q rage
   abbr --add raged "rage -d -i ~/.age/key.txt"
 end
 
+# onecli
+abbr --add onecli_update "curl -fsSL https://onecli.sh/install | sh"
+abbr --add onecli_stop "docker compose -p onecli -f $HOME/.onecli/docker-compose.yml down"
+
 # open is wsl-open, when using WSL
 if test "$HOST_NAME" != "azusa"
   abbr --add open wsl-open
