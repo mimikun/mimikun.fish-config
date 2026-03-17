@@ -25,7 +25,7 @@ complete -c poetry -f -n '__fish_poetry_d7cff4bab8e9cfdc_complete_no_subcommand'
 complete -c poetry -f -n '__fish_poetry_d7cff4bab8e9cfdc_complete_no_subcommand' -a add -d 'Adds a new dependency to pyproject.toml and installs it.'
 complete -c poetry -f -n '__fish_poetry_d7cff4bab8e9cfdc_complete_no_subcommand' -a build -d 'Builds a package, as a tarball and a wheel by default.'
 complete -c poetry -f -n '__fish_poetry_d7cff4bab8e9cfdc_complete_no_subcommand' -a cache
-complete -c poetry -f -n '__fish_seen_subcommand_from cache; and not __fish_seen_subcommand_from clear list' -a clear -d 'Clears a Poetry cache by name.'
+complete -c poetry -f -n '__fish_seen_subcommand_from cache; and not __fish_seen_subcommand_from clear list' -a clear -d 'Clear Poetry\'s caches.'
 complete -c poetry -f -n '__fish_seen_subcommand_from cache; and not __fish_seen_subcommand_from clear list' -a list -d 'List Poetry\'s caches.'
 complete -c poetry -f -n '__fish_poetry_d7cff4bab8e9cfdc_complete_no_subcommand' -a check -d 'Validates the content of the pyproject.toml file and its consistency with the poetry.lock file.'
 complete -c poetry -f -n '__fish_poetry_d7cff4bab8e9cfdc_complete_no_subcommand' -a config -d 'Manages configuration settings.'
@@ -197,10 +197,12 @@ complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subco
 
 # python list
 complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from list' -l all -d 'List all versions, including those available for download.'
+complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from list' -l free-threaded -d 'List only free-threaded Python versions.'
 complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from list' -l implementation -d 'Python implementation to search for.'
 complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from list' -l managed -d 'List only Poetry managed Python versions.'
 
 # python remove
+complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from remove' -l free-threaded -d 'Use free-threaded version if available.'
 complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from remove' -l implementation -d 'Python implementation to use. (cpython, pypy)'
 
 # remove
