@@ -82,6 +82,11 @@ if test -f "$HOME/.x-cmd.root/local/data/fish/rc.fish"
   source "$HOME/.x-cmd.root/local/data/fish/rc.fish"
 end
 
+# envman
+if test -s "$HOME/.config/envman/load.fish"
+  source "$HOME/.config/envman/load.fish"
+end
+
 # TODO: WORK IN PROGRESS
 # If you can enable zeno feature, run `set -Ux USE_ZENO true`
 # disable zeno feature, run `set -e USE_ZENO`
