@@ -82,6 +82,11 @@ if command -q fnox
   fnox activate fish | source
 end
 
+# pitchfork
+if command -q pitchfork
+  pitchfork activate fish | source
+end
+
 # x-cmd
 if test -f "$HOME/.x-cmd.root/local/data/fish/rc.fish"
   source "$HOME/.x-cmd.root/local/data/fish/rc.fish"
