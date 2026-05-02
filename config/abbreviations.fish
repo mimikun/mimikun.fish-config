@@ -61,6 +61,7 @@ end
 
 # vim is neovim
 abbr --add vim nvim
+abbr --add vimc cord-nvim-integration-nvim
 
 # vim is paleovim
 abbr --add pvim paleovim
