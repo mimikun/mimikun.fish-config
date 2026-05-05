@@ -315,13 +315,13 @@ set -gx PATH "$HOME/.moon/bin" $PATH
 set -gx PATH "$HOME/.browser-use-env/bin" $PATH
 
 # https://donottrack.sh
-set -x DO_NOT_TRACK 1
+#set -x DO_NOT_TRACK 1
 
 # https://force-color.org
-set -x FORCE_COLOR 1
+#set -x FORCE_COLOR 1
 
 # https://no-color.org
-set -x NO_COLOR 0
+#set -x NO_COLOR 0
 
 # age public keys
 set -gx AGE_PUBKEY_HOME "age1cktdwc8u4z76kawluyswaruyeg7eg6078rw3t0kkmx5wqkk40d2qzajn8y"
