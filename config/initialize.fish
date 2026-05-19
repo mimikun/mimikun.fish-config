@@ -124,9 +124,22 @@ else
 end
 #{{ end -}}
 
+# TODO: WORK IN PROGRESS
+# If you can enable cdx, run `set -Ux USE_MIMIKUN_CDX true`
+
 # zoxide
 if command -q zoxide
-  zoxide init fish | source
+  if set -q USE_MIMIKUN_CDX
+    zoxide init fish --no-cmd | source
+    # unbind fish-ghq
+    bind --erase \cg
+    bind --erase -M insert \cg
+    # bind mimikun_cdx
+    bind ctrl-g __mimikun_cdx
+    bind -M insert ctrl-g __mimikun_cdx
+  else
+    zoxide init fish | source
+  end
 end
 
 # vim:ft=fish
