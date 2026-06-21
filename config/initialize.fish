@@ -87,6 +87,11 @@ if command -q pitchfork
   pitchfork activate fish | source
 end
 
+# kyushu
+if command -q kyu
+    source "$HOME/.kyu/bin/env.fish"
+end
+
 # x-cmd
 if test -f "$HOME/.x-cmd.root/local/data/fish/rc.fish"
   source "$HOME/.x-cmd.root/local/data/fish/rc.fish"
