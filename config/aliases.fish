@@ -9,6 +9,8 @@ alias imgcat "wezterm imgcat"
 alias pip "python3 -m pip"
 alias pipx "python3 -m pipx"
 
+alias sem "$HOME/.cargo/bin/sem"
+
 # mise
 if command -q mise
   alias paleovim "$HOME/.local/share/mise/installs/vim/ref-master/bin/vim"
