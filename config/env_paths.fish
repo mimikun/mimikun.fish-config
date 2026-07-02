@@ -46,6 +46,7 @@ if test "$HOST_NAME" = "azusa"
   set -gx BROWSER "vivaldi"
 else
   set -gx BROWSER "wsl-open"
+  set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/wsl2-ssh-agent.sock"
 end
 
 ## env-vars
