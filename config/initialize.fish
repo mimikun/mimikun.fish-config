@@ -1,10 +1,10 @@
 # dotnet-core completions
-if command -q dotnet
+if status is-interactive; and command -q dotnet
   complete -f -c dotnet -a "(dotnet complete)"
 end
 
 # inshellisense
-if test -f "$HOME/.inshellisense/key-bindings.fish"
+if status is-interactive; and test -f "$HOME/.inshellisense/key-bindings.fish"
   source "$HOME/.inshellisense/key-bindings.fish"
 end
 
@@ -19,61 +19,61 @@ if command -q mise
 end
 
 # starship
-if test "$USE_SHELL_PROMPT" = "starship"
+if test "$USE_SHELL_PROMPT" = "starship"; and status is-interactive
   if command -q starship
     starship init fish --print-full-init | source
   end
 end
 
 # oh-my-posh
-if test "$USE_SHELL_PROMPT" = "oh-my-posh"
+if test "$USE_SHELL_PROMPT" = "oh-my-posh"; and status is-interactive
   if command -q oh-my-posh
     oh-my-posh init fish --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/tokyonight_storm.omp.json' | source
   end
 end
 
 # pay-respects
-if command -q pay-respects
+if status is-interactive; and command -q pay-respects
   pay-respects fish --alias | source
 end
 
 # jujutsu
-if command -q jj
+if status is-interactive; and command -q jj
   jj util completion fish | source
 end
 
 # go-task
-if command -q task
+if status is-interactive; and command -q task
   task --completion fish | source
 end
 
 # jump
-if command -q jump
+if status is-interactive; and command -q jump
   jump shell fish | source
 end
 
 # wtp
-if command -q wtp
+if status is-interactive; and command -q wtp
   wtp shell-init fish | source
 end
 
 # handler
-if command -q handler
-  _HANDLER_COMPLETE=fish_source handler | source
+if status is-interactive; and command -q handler
+  env _HANDLER_COMPLETE=fish_source handler | source
 end
 
 # worktrunk
-if command -q wt
+if status is-interactive; and command -q wt
   wt config shell init fish | source
 end
 
 # git-wt
-if command -q git-wt
+if status is-interactive; and command -q git-wt
   git wt --init fish | source
 end
 
 # atuin
-if command -q atuin
+if status is-interactive; and command -q atuin
   atuin init fish | source
 end
 
@@ -105,7 +105,7 @@ end
 # TODO: WORK IN PROGRESS
 # If you can enable zeno feature, run `set -Ux USE_ZENO true`
 # disable zeno feature, run `set -e USE_ZENO`
-if set -q USE_ZENO
+if set -q USE_ZENO; and status is-interactive
   if test "$ZENO_LOADED" = "1"
     bind space zeno-auto-snippet
     bind -M insert space zeno-auto-snippet
@@ -125,12 +125,12 @@ if command -q this_is_work_pc
 else
   # nix activate script
   source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
-  set -gx PATH $HOME/.nix-profile/bin $PATH
+  fish_add_path --global $HOME/.nix-profile/bin
 end
 #{{ end -}}
 
 # zoxide
-if command -q zoxide
+if status is-interactive; and command -q zoxide
   zoxide init fish | source
 end
 
