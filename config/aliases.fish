@@ -1,42 +1,44 @@
-# base
-alias rm "rm -i"
-alias mkdir "mkdir -p"
-alias untar "tar xvf"
-alias patch "patch -p1 <"
+# Aliases are interactive-only shortcuts; skip them in non-interactive shells.
+if status is-interactive
+  # base
+  alias rm "rm -i"
+  alias mkdir "mkdir -p"
+  alias untar "tar xvf"
+  alias patch "patch -p1 <"
 
-# other
-alias imgcat "wezterm imgcat"
-alias pip "python3 -m pip"
-alias pipx "python3 -m pipx"
+  # other
+  alias imgcat "wezterm imgcat"
+  alias pip "python3 -m pip"
+  alias pipx "python3 -m pipx"
 
-alias sem "$HOME/.cargo/bin/sem"
+  alias sem "$HOME/.cargo/bin/sem"
 
-# mise
-if command -q mise
-  alias paleovim "$HOME/.local/share/mise/installs/vim/ref-master/bin/vim"
-end
-
-## ls cmds
-# eza
-if test "$LS_CMD" = "eza"
-  if command -q eza
-    alias ls "eza --color=always --icons=always --group-directories-first"
+  # mise
+  if command -q mise
+    alias paleovim "$HOME/.local/share/mise/installs/vim/ref-master/bin/vim"
   end
-end
 
-# lla
-if test "$LS_CMD" = "lla"
-  if command -q lla
-    alias ls "lla --icons --sort-dirs-first"
+  ## ls cmds
+  # eza
+  if test "$LS_CMD" = "eza"
+    if command -q eza
+      alias ls "eza --color=always --icons=always --group-directories-first"
+    end
   end
-end
 
-# lsd
-if test "$LS_CMD" = "lsd"
-  if command -q lsd
-    alias ls "lsd --help"
+  # lla
+  if test "$LS_CMD" = "lla"
+    if command -q lla
+      alias ls "lla --icons --sort-dirs-first"
+    end
+  end
+
+  # lsd
+  if test "$LS_CMD" = "lsd"
+    if command -q lsd
+      alias ls "lsd --color=always --icon=always --group-directories-first"
+    end
   end
 end
 
 # vim:ft=fish
-
