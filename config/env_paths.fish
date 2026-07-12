@@ -10,17 +10,17 @@ set -gx PIPENV_VENV_IN_PROJECT 1
 set -gx TODAY (date +"%Y/%m/%d")
 set -gx TZ "Asia/Tokyo"
 
-## ls commands
+## ls commands (read by fish only -> set -g, no export)
 # "eza", "lla", "lsd"
-set -gx LS_CMD "eza"
+set -g LS_CMD "eza"
 
-## shell prompts
+## shell prompts (read by fish only -> set -g, no export)
 # "oh-my-posh", "starship", "tide", "hydro", pure-fish"
-set -gx USE_SHELL_PROMPT "starship"
+set -g USE_SHELL_PROMPT "starship"
 
-## neovim version manager
+## neovim version manager (read by fish only -> set -g, no export)
 # "nvs", "bob"
-set -gx USE_NVIM_VERSION_MANAGER "bob"
+set -g USE_NVIM_VERSION_MANAGER "bob"
 
 # XDG Base Directory
 set -gx XDG_CONFIG_HOME $HOME/.config
