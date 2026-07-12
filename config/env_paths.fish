@@ -1,5 +1,5 @@
-# hostname
-set --local HOST_NAME (cat /etc/hostname | tr [:upper:] [:lower:])
+# hostname (use the read-only $hostname var instead of spawning cat/tr)
+set --local HOST_NAME (string lower $hostname)
 
 # Global
 set -gx LANG "en_US.UTF-8"
