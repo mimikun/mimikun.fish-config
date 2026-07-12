@@ -125,15 +125,18 @@ set -gx CHEZMOI_DIR "$XDG_DATA_HOME/chezmoi"
 
 set -gx LOCALBIN $HOME/.local/bin
 
-set -gx PATH /usr/bin $PATH
-set -gx PATH /usr/local/bin $PATH
-set -gx PATH /usr/local/sbin $PATH
-set -gx PATH $HOME/go/bin $PATH
-set -gx PATH $HOME/.cargo/bin $PATH
-set -gx PATH $HOME/.local/bin $PATH
+# System dirs: append so they stay behind user tool dirs (already in the
+# inherited login PATH; fish_add_path skips missing dirs and de-duplicates).
+fish_add_path --global --append /usr/bin
+fish_add_path --global --append /usr/local/bin
+fish_add_path --global --append /usr/local/sbin
+# User tool dirs: prepend (later calls win, matching the previous ordering).
+fish_add_path --global $HOME/go/bin
+fish_add_path --global $HOME/.cargo/bin
+fish_add_path --global $HOME/.local/bin
 
 set -gx DENO_INSTALL $HOME/.deno
-set -gx PATH $DENO_INSTALL/bin $PATH
+fish_add_path --global $DENO_INSTALL/bin
 
 # starship
 if test "$USE_SHELL_PROMPT" = "starship"
@@ -142,49 +145,44 @@ if test "$USE_SHELL_PROMPT" = "starship"
   set -gx STARSHIP_CACHE $XDG_CACHE_HOME/starship
 end
 
-# tide
+# tide (all read by fish/tide only -> set -g, no export)
 if test "$USE_SHELL_PROMPT" = "tide"
-  set -gx TIDE_STYLE 'Classic'
-  set -gx TIDE_PROMPT_COLORS 'True color'
-  set -gx TIDE_CLASSIC_PROMPT_COLOR 'Light'
-  set -gx TIDE_SHOW_TIME '24-hour format'
-  set -gx TIDE_CLASSIC_PROMPT_SEPARATORS 'Angled'
-  set -gx TIDE_POWERLINE_PROMPT_HEADS 'Round'
-  set -gx TIDE_POWERLINE_PROMPT_TAILS 'Round'
-  set -gx TIDE_POWERLINE_PROMPT_STYLE 'Two lines, character'
-  set -gx TIDE_PROMPT_CONNECTION 'Disconnected'
-  set -gx TIDE_POWERLINE_RIGHT_PROMPT_FRAME 'No'
-  set -gx TIDE_PROMPT_CONNECTION_ANDOR_FRAME_COLOR 'Light'
-  set -gx TIDE_PROMPT_SPACING 'Sparse'
-  set -gx TIDE_ICONS 'Many icons'
-  set -gx TIDE_TRANSIENT 'No'
+  set -g TIDE_STYLE 'Classic'
+  set -g TIDE_PROMPT_COLORS 'True color'
+  set -g TIDE_CLASSIC_PROMPT_COLOR 'Light'
+  set -g TIDE_SHOW_TIME '24-hour format'
+  set -g TIDE_CLASSIC_PROMPT_SEPARATORS 'Angled'
+  set -g TIDE_POWERLINE_PROMPT_HEADS 'Round'
+  set -g TIDE_POWERLINE_PROMPT_TAILS 'Round'
+  set -g TIDE_POWERLINE_PROMPT_STYLE 'Two lines, character'
+  set -g TIDE_PROMPT_CONNECTION 'Disconnected'
+  set -g TIDE_POWERLINE_RIGHT_PROMPT_FRAME 'No'
+  set -g TIDE_PROMPT_CONNECTION_ANDOR_FRAME_COLOR 'Light'
+  set -g TIDE_PROMPT_SPACING 'Sparse'
+  set -g TIDE_ICONS 'Many icons'
+  set -g TIDE_TRANSIENT 'No'
 end
 
 # bob-nvim
 if test "$USE_NVIM_VERSION_MANAGER" = "bob"
-  set -gx PATH "$XDG_DATA_HOME/bob/nvim-bin" $PATH
+  fish_add_path --global "$XDG_DATA_HOME/bob/nvim-bin"
   set -gx BOB_CONFIG $XDG_CONFIG_HOME/bob/config.toml
 end
 
 # nvs
 if test "$USE_NVIM_VERSION_MANAGER" = "nvs"
-  set -gx PATH "$NVS_BIN_DIR" $PATH
   set -gx NVS_BIN_DIR $XDG_DATA_HOME/nvs/bin
+  fish_add_path --global "$NVS_BIN_DIR"
 end
 
-set -gx PATH /bin $PATH
-set -gx PATH /usr/games $PATH
-set -gx PATH /usr/sbin $PATH
-set -gx PATH /usr/local/games $PATH
-set -gx PATH /sbin $PATH
-set -gx PATH /snap/bin $PATH
-set -gx PATH $HOME/.fzf/bin $PATH
-set -gx PATH $HOME/.local/bin/ $PATH
-set -gx PATH $HOME/.npm-global/bin $PATH
-set -gx PATH $HOME/.dotnet/tools/ $PATH
-set -gx PATH $HOME/.gem/ruby/2.7.0/bin/ $PATH
-set -gx PATH $HOME/depot_tools $PATH
-set -gx PATH /usr/local/go/bin/ $PATH
+# System dirs (append; kept for hosts where they are not in the login PATH).
+fish_add_path --global --append /bin /usr/games /usr/sbin /usr/local/games /sbin /snap/bin /usr/local/go/bin
+# User tool dirs. (.local/bin already added above; the duplicate is dropped.)
+fish_add_path --global $HOME/.fzf/bin
+fish_add_path --global $HOME/.npm-global/bin
+fish_add_path --global $HOME/.dotnet/tools
+fish_add_path --global $HOME/.gem/ruby/2.7.0/bin
+fish_add_path --global $HOME/depot_tools
 
 set -gx EDITOR nvim
 set -gx LESS "-R"
@@ -194,19 +192,19 @@ set -gx GIT_PAGER less
 
 # Bun
 set -gx BUN_INSTALL $HOME/.bun
-set -gx PATH $BUN_INSTALL/bin $PATH
+fish_add_path --global $BUN_INSTALL/bin
 
 # fly.io
 set -gx FLYCTL_INSTALL $HOME/.fly
-set -gx PATH $FLYCTL_INSTALL/bin $PATH
+fish_add_path --global $FLYCTL_INSTALL/bin
 
 # pnpm
 set -gx PNPM_HOME $XDG_DATA_HOME/pnpm
-set -gx PATH "$PNPM_HOME" $PATH
+fish_add_path --global "$PNPM_HOME"
 
 # cabal config
-set -gx PATH $HOME/.cabal/bin $PATH
-set -gx PATH $HOME/.ghcup/bin $PATH
+fish_add_path --global $HOME/.cabal/bin
+fish_add_path --global $HOME/.ghcup/bin
 
 # https://github.com/antfu/ni config
 if command -q ni
@@ -214,35 +212,27 @@ if command -q ni
 end
 
 # codon config
-if command -q
-    set -gx PATH $HOME/.codon/bin $PATH
+if command -q codon
+    fish_add_path --global $HOME/.codon/bin
 end
 
 # Rye
-set -gx PATH $HOME/.rye/shims $PATH
+fish_add_path --global $HOME/.rye/shims
 
 # luarocks
-set -gx PATH $HOME/.luarocks/bin $PATH
+fish_add_path --global $HOME/.luarocks/bin
 
-set -gx LUA_PATH "/usr/local/share/lua/5.3/?.lua"
-set -gx LUA_PATH "/usr/local/share/lua/5.3/?/init.lua" $LUA_PATH
-set -gx LUA_PATH "/usr/local/lib/lua/5.3/?.lua" $LUA_PATH
-set -gx LUA_PATH "/usr/local/lib/lua/5.3/?/init.lua" $LUA_PATH
-set -gx LUA_PATH "./?.lua" $LUA_PATH
-set -gx LUA_PATH "./?/init.lua" $LUA_PATH
-set -gx LUA_PATH "$HOME/.luarocks/share/lua/5.3/?.lua" $LUA_PATH
-set -gx LUA_PATH "$HOME/.luarocks/share/lua/5.3/?/init.lua" $LUA_PATH
+# LUA_PATH/LUA_CPATH are semicolon-separated scalars for external Lua.
+# Order (highest priority first): $HOME/.luarocks -> ./ -> /usr/local/lib -> /usr/local/share.
+set -gx LUA_PATH "$HOME/.luarocks/share/lua/5.3/?.lua;$HOME/.luarocks/share/lua/5.3/?/init.lua;./?.lua;./?/init.lua;/usr/local/lib/lua/5.3/?.lua;/usr/local/lib/lua/5.3/?/init.lua;/usr/local/share/lua/5.3/?.lua;/usr/local/share/lua/5.3/?/init.lua"
 
-set -gx LUA_CPATH "/usr/local/lib/lua/5.3/?.so"
-set -gx LUA_CPATH "/usr/local/lib/lua/5.3/loadall.so" $LUA_CPATH
-set -gx LUA_CPATH "./?.so" $LUA_CPATH
-set -gx LUA_CPATH "$HOME/.luarocks/lib/lua/5.3/?.so" $LUA_CPATH
+set -gx LUA_CPATH "$HOME/.luarocks/lib/lua/5.3/?.so;./?.so;/usr/local/lib/lua/5.3/loadall.so;/usr/local/lib/lua/5.3/?.so"
 
 # aqua
 set -gx AQUA_ROOT_DIR "$XDG_DATA_HOME/aqua"
 set -gx AQUA_CONFIG_DIR "$XDG_CONFIG_HOME/aqua"
 set -gx AQUA_BIN "$AQUA_ROOT_DIR/bin"
-set -gx PATH $AQUA_BIN $PATH
+fish_add_path --global $AQUA_BIN
 
 set -gx AQUA_CONFIG "$AQUA_CONFIG_DIR/aqua.yaml"
 set -gx AQUA_GLOBAL_CONFIG $AQUA_CONFIG
@@ -265,28 +255,28 @@ end
 set -gx COMPOSER_CONFIG_HOME $XDG_CONFIG_HOME/composer
 set -gx COMPOSER_BIN_DIR $COMPOSER_CONFIG_HOME/vendor/bin
 
-set -gx PATH $COMPOSER_BIN_DIR $PATH
+fish_add_path --global $COMPOSER_BIN_DIR
 
 # Julia
-set -gx PATH "$HOME/.juliaup/bin" $PATH
+fish_add_path --global "$HOME/.juliaup/bin"
 
 # mocword dict
 set -gx MOCWORD_DATA "$XDG_CACHE_HOME/mocword.sqlite"
 
 # nimble
-set -gx PATH $HOME/.nimble/bin $PATH
+fish_add_path --global $HOME/.nimble/bin
 
 # golang
 set -gx GOPATH $HOME/go
 set -gx GOBIN $GOPATH/bin
-set -gx PATH $GOBIN $PATH
+fish_add_path --global $GOBIN
 
 # zettelkasten
 set -gx zettelkasten_root "$GHQ_ROOT/codeberg.org/mimikun/zettelkasten"
 
 # forgit
-set -gx PATH $FISH_CONFIG_DIR/conf.d/bin $PATH
-set -gx FORGIT_NO_ALIASES true
+fish_add_path --global $FISH_CONFIG_DIR/conf.d/bin
+set -g FORGIT_NO_ALIASES true
 
 # Claude Desktop
 if test "$HOST_NAME" = "wakamo"
@@ -296,24 +286,24 @@ end
 
 # depot
 set -gx DEPOT_INSTALL_DIR "$HOME/.depot/bin"
-set -gx PATH "$DEPOT_INSTALL_DIR" $PATH
+fish_add_path --global "$DEPOT_INSTALL_DIR"
 
 # rebar3
 if command -q rebar3
-  set -gx PATH "$XDG_CACHE_HOME/rebar3/bin" $PATH
+  fish_add_path --global "$XDG_CACHE_HOME/rebar3/bin"
 end
 
 # opencode
-set -gx PATH "$HOME/.opencode/bin" $PATH
+fish_add_path --global "$HOME/.opencode/bin"
 
 # kubectl krew
-set -gx PATH "$HOME/.krew/bin" $PATH
+fish_add_path --global "$HOME/.krew/bin"
 
 # moonbit
-set -gx PATH "$HOME/.moon/bin" $PATH
+fish_add_path --global "$HOME/.moon/bin"
 
 # Browser-Use
-set -gx PATH "$HOME/.browser-use-env/bin" $PATH
+fish_add_path --global "$HOME/.browser-use-env/bin"
 
 # https://donottrack.sh
 #set -x DO_NOT_TRACK 1
@@ -325,13 +315,13 @@ set -gx PATH "$HOME/.browser-use-env/bin" $PATH
 #set -x NO_COLOR 0
 
 # Added by git-ai installer on Fri May 29 03:18:44 PM JST 2026
-set -gx PATH "$HOME/.git-ai/bin" $PATH
+fish_add_path --global "$HOME/.git-ai/bin"
 
 # simutil
-set -gx PATH "$HOME/.local/lib/simutil" $PATH
+fish_add_path --global "$HOME/.local/lib/simutil"
 
 # meow
-set -gx PATH "$HOME/.meow/bin" $PATH
+fish_add_path --global "$HOME/.meow/bin"
 
 # ant
 set -gx ANT_INSTALL "$HOME/.ant"
