@@ -1,0 +1,27 @@
+config/env_paths.fish
+  s_928ca00f9acf0d::t_1683a71f7e7594 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "692f4ceaab1b6b122ab40928c37b018c4ae99abe",
+  "prompts": {},
+  "sessions": {
+    "s_3a2f2e40d5d102": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f0b68527-9787-4707-8b12-02b5ae2412af",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    },
+    "s_928ca00f9acf0d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0304e5a2-932f-4c66-a912-9d20adbf95a0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
