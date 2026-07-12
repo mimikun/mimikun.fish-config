@@ -1,0 +1,30 @@
+config/env_paths.fish
+  s_928ca00f9acf0d::t_ed5c51a3c57009 225-229
+  s_928ca00f9acf0d::t_4aa794f80a1add 278-279
+  s_928ca00f9acf0d::t_d51ba47e855b63 148,150-163
+  s_928ca00f9acf0d::t_108aad62ad4e30 258,261
+  s_928ca00f9acf0d::t_762aea4be03e70 318,321,324
+  s_928ca00f9acf0d::t_3a9fd6facfbe3f 128-136,139
+  s_928ca00f9acf0d::t_b684698176aaec 195,199,203,206-207,215-216,220,223
+  s_928ca00f9acf0d::t_aee4544c13a60a 289,293,297,300,303,306
+  s_928ca00f9acf0d::t_f547bfcb19e4cf 168,175,178-185
+  s_928ca00f9acf0d::t_9ab182d9a0098e 235
+  s_928ca00f9acf0d::t_79ba5ba2d07b7e 267,272
+  s_928ca00f9acf0d::t_8835d95d04c7fa 224
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.11",
+  "base_commit_sha": "1dbe395101316a1749c958d807bb096a92ebf628",
+  "prompts": {},
+  "sessions": {
+    "s_928ca00f9acf0d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0304e5a2-932f-4c66-a912-9d20adbf95a0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
