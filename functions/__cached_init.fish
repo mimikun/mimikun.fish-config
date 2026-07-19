@@ -40,8 +40,12 @@ function __cached_init --description 'Source a tool init script, caching its out
 
     # Never cache a failed or empty run: the plugin this replaces would happily
     # store half-written output and keep sourcing it forever.
-    if test $rc -ne 0; or test (count $output) -eq 0
-        echo "__cached_init: '$argv' failed (status $rc); skipping this init" >&2
+    if test $rc -ne 0
+        echo "__cached_init: '$argv' exited $rc; skipping this init" >&2
+        return 1
+    end
+    if test (count $output) -eq 0
+        echo "__cached_init: '$argv' produced no output; skipping this init" >&2
         return 1
     end
 
