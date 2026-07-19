@@ -1,0 +1,30 @@
+config/abbreviations.fish
+  s_752e60db8db22f::t_2238db1c107ea3 1-21,24-53,56-61,64-68,70-71,73-74,76-94,96-99,101-165
+config.fish
+  s_752e60db8db22f::t_abff4e02443795 1-4
+config/initialize.fish
+  s_752e60db8db22f::t_b732ddedbb4ca5 122
+  s_752e60db8db22f::t_136a67168679a7 90
+functions/fish_prompt.fish
+  s_752e60db8db22f::t_9c941c10d8f4e2 1-2
+functions/cord-nvim-integration-nvim.fish
+  s_752e60db8db22f::t_27bd7677f44a62 2-4,6
+config/env_paths.fish
+  s_752e60db8db22f::t_bb1f2c7b79a899 128-155
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "6ec0c216a45a9dccca15124c4af18996db1d068e",
+  "prompts": {},
+  "sessions": {
+    "s_752e60db8db22f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60ed0bf3-235a-40e0-aaeb-62849aa26a3e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+functions/__cached_init.fish
+  s_752e60db8db22f::t_dcb6a182a71e61 1-65
+config/initialize.fish
+  s_752e60db8db22f::t_af49b6534d453e 54,59,64,74
+  s_752e60db8db22f::t_4563e35bec2c28 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "73db564c9196d8a06249250b975447d600a046a7",
+  "prompts": {},
+  "sessions": {
+    "s_752e60db8db22f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60ed0bf3-235a-40e0-aaeb-62849aa26a3e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
