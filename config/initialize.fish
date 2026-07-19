@@ -71,14 +71,6 @@ if status is-interactive; and command -q wtp
   _evalcache wtp shell-init fish
 end
 
-# handler (a Python CLI: ~1.5s of interpreter startup for 608 bytes of output).
-# Export the var rather than wrapping in `env`, so the cache key is keyed on
-# "handler" instead of a shared "env" entry.
-if status is-interactive; and command -q handler
-  set -lx _HANDLER_COMPLETE fish_source
-  _evalcache handler
-end
-
 # worktrunk
 if status is-interactive; and command -q wt
   wt config shell init fish | source
