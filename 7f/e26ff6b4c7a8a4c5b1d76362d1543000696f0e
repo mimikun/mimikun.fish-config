@@ -1,0 +1,23 @@
+config/env_paths.fish
+  s_752e60db8db22f::t_7a236fa1afdb57 36-38
+config/initialize.fish
+  s_752e60db8db22f::t_d0be8884c69d5b 1-14
+  s_752e60db8db22f::t_67663236b063d6 61,66,71,89
+  s_752e60db8db22f::t_be29a730e6b622 74-76,78-79
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "7fe26ff6b4c7a8a4c5b1d76362d1543000696f0e",
+  "prompts": {},
+  "sessions": {
+    "s_752e60db8db22f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "60ed0bf3-235a-40e0-aaeb-62849aa26a3e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
