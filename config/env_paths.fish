@@ -125,6 +125,34 @@ set -gx CHEZMOI_DIR "$XDG_DATA_HOME/chezmoi"
 
 set -gx LOCALBIN $HOME/.local/bin
 
+# WSL interop PATH allowlist.
+#
+# WSL appends ~40 Windows directories to PATH. They live on the 9p/drvfs mount,
+# so every failed command lookup has to stat all of them: measured at 78ms per
+# miss, ~0.86s of shell startup. Keeping only the handful we actually invoke
+# from fish brings that down to ~6.5ms.
+#
+# This only affects commands typed in fish. The ssh-agent bridge
+# (~/.wsl2-ssh-agent, a systemd user service) and cord-nvim's npiperelay call
+# resolve their Windows binaries by absolute path, not through PATH.
+if string match -qr '^/mnt/' -- $PATH
+  set -l win_keep \
+    /mnt/c/WINDOWS/system32 \
+    /mnt/c/WINDOWS \
+    "$WIN_HOME/scoop/shims" \
+    "$WIN_HOME/scoop/apps/gsudo/current"
+
+  set -l pruned
+  for dir in $PATH
+    if string match -qr '^/mnt/' -- $dir
+      contains -- $dir $win_keep; and set -a pruned $dir
+    else
+      set -a pruned $dir
+    end
+  end
+  set -gx PATH $pruned
+end
+
 # System dirs: append so they stay behind user tool dirs (already in the
 # inherited login PATH; fish_add_path skips missing dirs and de-duplicates).
 fish_add_path --global --append /usr/bin
