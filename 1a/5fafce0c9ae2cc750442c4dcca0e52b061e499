@@ -1,0 +1,31 @@
+completions/aube.fish
+  s_d94119ca88713a::t_3374a4c9f1b6f2 11
+completions/deno.fish
+  s_d94119ca88713a::t_2cd9ed05914eff 585-586,1076,1234,1862-1863,1988-1989
+completions/fnox.fish
+  s_d94119ca88713a::t_74b9f3b5819d96 11
+completions/herdr.fish
+  s_d94119ca88713a::t_fec16d25c13929 61-62,76-82,88-92,301-302
+completions/mise.fish
+  s_d94119ca88713a::t_0355f98a9d94d9 11
+completions/pixi.fish
+  s_d94119ca88713a::t_497715284bd6d9 210,212,1870-1871,1914-1915
+completions/uv.fish
+  s_d94119ca88713a::t_43538ed32b35fc 1355-1356,1947,2152,2359,3304,3523,3740
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "1a5fafce0c9ae2cc750442c4dcca0e52b061e499",
+  "prompts": {},
+  "sessions": {
+    "s_d94119ca88713a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "719d1c7c-cea2-482b-9345-b65bd9ce7f5c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
