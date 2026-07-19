@@ -7,8 +7,6 @@ completions/spin.fish
 
 # functions
 functions/__ghq_repository_search.fish
-functions/_evalcache.fish
-functions/_evalcache_clear.fish
 functions/_na.fish
 functions/bd.fish
 functions/cute.fish
