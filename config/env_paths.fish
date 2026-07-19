@@ -33,9 +33,6 @@ set -gx FISH_CONFIG_DIR $XDG_CONFIG_HOME/fish
 set -gx FISH_COMPLETIONS_DIR $FISH_CONFIG_DIR/completions
 set -gx FISH_FUNCTIONS_DIR $FISH_CONFIG_DIR/functions
 set -gx FISH_CACHE_DIR $XDG_CACHE_HOME/fish
-# Where fish-evalcache stores cached `<tool> init` output (defaults to
-# ~/.fish-evalcache; point it at the XDG cache dir instead).
-set -gx FISH_EVALCACHE_DIR $FISH_CACHE_DIR/evalcache
 
 set -gx CONFIG_FISH $FISH_CONFIG_DIR/config.fish
 set -gx CACHE_CONFIG_FISH $FISH_CACHE_DIR/config.fish
