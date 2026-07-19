@@ -87,10 +87,7 @@ if command -q pitchfork
   pitchfork activate fish | source
 end
 
-# kyushu
-if command -q kyu
-    source "$HOME/.kyu/bin/env.fish"
-end
+# kyushu is sourced by its installer-generated conf.d/kyushu-cli.env.fish
 
 # x-cmd
 if test -f "$HOME/.x-cmd.root/local/data/fish/rc.fish"
@@ -122,7 +119,7 @@ end
 #{{ if (isExecutable "/usr/local/bin/this_is_work_pc") -}}
 if command -q this_is_work_pc
   #cat $XDG_CONFIG_HOME/{{ (rbwFields "dotfiles-chezmoi").source_work_pc_only_tool_fish_1.value }} | source
-else
+else if test -f /nix/var/nix/profiles/default/etc/profile.d/nix.fish
   # nix activate script
   source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
   fish_add_path --global $HOME/.nix-profile/bin
