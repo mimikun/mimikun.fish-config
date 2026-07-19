@@ -1,16 +1,9 @@
-# Tool init scripts below are cached with fish-evalcache (a pez plugin), since
-# re-running each one costs a subprocess on every shell start. Run
-# `_evalcache_clear <tool>` after upgrading a tool, or `_evalcache_clear` for all.
+# Tool init scripts below go through __cached_init (see functions/), which
+# caches their output and re-generates it when the tool binary changes.
 #
 # Only cache commands whose output is static for a given tool version. Anything
 # that inspects the current directory or session (e.g. `mise hook-env`) must
 # keep running every time.
-if not functions -q _evalcache
-  # Plugin not installed yet (fresh checkout before `pez install`): run directly.
-  function _evalcache
-    $argv | source
-  end
-end
 
 # dotnet-core completions
 if status is-interactive; and command -q dotnet
@@ -58,17 +51,17 @@ end
 
 # go-task
 if status is-interactive; and command -q task
-  _evalcache task --completion fish
+  __cached_init task --completion fish
 end
 
 # jump
 if status is-interactive; and command -q jump
-  _evalcache jump shell fish
+  __cached_init jump shell fish
 end
 
 # wtp
 if status is-interactive; and command -q wtp
-  _evalcache wtp shell-init fish
+  __cached_init wtp shell-init fish
 end
 
 # worktrunk
@@ -78,7 +71,7 @@ end
 
 # git-wt
 if status is-interactive; and command -q git-wt
-  _evalcache git wt --init fish
+  __cached_init git-wt --init fish
 end
 
 # atuin
