@@ -1,7 +1,7 @@
-source ~/.config/fish/config/env_paths.fish
-source ~/.config/fish/config/aliases.fish
-source ~/.config/fish/config/abbreviations.fish
-source ~/.config/fish/config/initialize.fish
+source $__fish_config_dir/config/env_paths.fish
+source $__fish_config_dir/config/aliases.fish
+source $__fish_config_dir/config/abbreviations.fish
+source $__fish_config_dir/config/initialize.fish
 
 # vim:ft=fish
 
