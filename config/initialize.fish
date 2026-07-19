@@ -1,3 +1,17 @@
+# Tool init scripts below are cached with fish-evalcache (a pez plugin), since
+# re-running each one costs a subprocess on every shell start. Run
+# `_evalcache_clear <tool>` after upgrading a tool, or `_evalcache_clear` for all.
+#
+# Only cache commands whose output is static for a given tool version. Anything
+# that inspects the current directory or session (e.g. `mise hook-env`) must
+# keep running every time.
+if not functions -q _evalcache
+  # Plugin not installed yet (fresh checkout before `pez install`): run directly.
+  function _evalcache
+    $argv | source
+  end
+end
+
 # dotnet-core completions
 if status is-interactive; and command -q dotnet
   complete -f -c dotnet -a "(dotnet complete)"
@@ -44,22 +58,25 @@ end
 
 # go-task
 if status is-interactive; and command -q task
-  task --completion fish | source
+  _evalcache task --completion fish
 end
 
 # jump
 if status is-interactive; and command -q jump
-  jump shell fish | source
+  _evalcache jump shell fish
 end
 
 # wtp
 if status is-interactive; and command -q wtp
-  wtp shell-init fish | source
+  _evalcache wtp shell-init fish
 end
 
-# handler
+# handler (a Python CLI: ~1.5s of interpreter startup for 608 bytes of output).
+# Export the var rather than wrapping in `env`, so the cache key is keyed on
+# "handler" instead of a shared "env" entry.
 if status is-interactive; and command -q handler
-  env _HANDLER_COMPLETE=fish_source handler | source
+  set -lx _HANDLER_COMPLETE fish_source
+  _evalcache handler
 end
 
 # worktrunk
@@ -69,7 +86,7 @@ end
 
 # git-wt
 if status is-interactive; and command -q git-wt
-  git wt --init fish | source
+  _evalcache git wt --init fish
 end
 
 # atuin
