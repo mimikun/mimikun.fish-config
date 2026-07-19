@@ -325,7 +325,7 @@ fish_add_path --global "$HOME/.meow/bin"
 
 # ant
 set -gx ANT_INSTALL "$HOME/.ant"
-set -gx PATH "$ANT_INSTALL/bin" $PATH
+fish_add_path --global "$ANT_INSTALL/bin"
 
 # age public keys
 set -gx AGE_PUBKEY_HOME "age1cktdwc8u4z76kawluyswaruyeg7eg6078rw3t0kkmx5wqkk40d2qzajn8y"
