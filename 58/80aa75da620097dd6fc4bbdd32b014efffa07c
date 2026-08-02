@@ -1,0 +1,19 @@
+completions/claude.fish
+  s_fcc62de6a2b18b::t_9f53b4afe6592b 1-549
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "5880aa75da620097dd6fc4bbdd32b014efffa07c",
+  "prompts": {},
+  "sessions": {
+    "s_fcc62de6a2b18b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "343b6a85-9b3b-48cc-a205-9de308fc6108",
+        "model": "unknown"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
