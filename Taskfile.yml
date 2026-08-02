@@ -21,6 +21,15 @@ tasks:
       - echo "WIP"
     silent: true
 
+  gen-claude-completion:
+    desc: Regenerate completions/claude.fish from claude --help
+    aliases:
+      - gcc
+    cmds:
+      - ./scripts/gen-claude-completion.ts > completions/claude.fish
+      - fish -c 'source completions/claude.fish'
+    silent: true
+
   pull:
     desc: git pull
     cmds:
