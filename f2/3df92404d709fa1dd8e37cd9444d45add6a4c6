@@ -1,0 +1,21 @@
+Taskfile.yml
+  s_fcc62de6a2b18b::t_c3100d46f88db2 24-32
+scripts/gen-claude-completion.ts
+  s_fcc62de6a2b18b::t_6a70f96ef55afc 1-400
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "f23df92404d709fa1dd8e37cd9444d45add6a4c6",
+  "prompts": {},
+  "sessions": {
+    "s_fcc62de6a2b18b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "343b6a85-9b3b-48cc-a205-9de308fc6108",
+        "model": "unknown"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
