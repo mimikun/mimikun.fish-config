@@ -1,0 +1,14 @@
+config/abbreviations.fish
+  h_220433a6faf6b8 166-170
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "993a6c9cb0275d27ef1c7912479cacd41427fbd3",
+  "prompts": {},
+  "humans": {
+    "h_220433a6faf6b8": {
+      "author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
