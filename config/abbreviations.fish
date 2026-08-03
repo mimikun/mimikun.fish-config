@@ -163,6 +163,11 @@ if status is-interactive
   if test "$HOST_NAME" != "azusa"; and command -q wsl-open
     abbr --add open wsl-open
   end
+
+  # ccusage
+  if command -q bun
+    abbr --add ccusage "bunx ccusage"
+  end
 end
 
 # vim:ft=fish
