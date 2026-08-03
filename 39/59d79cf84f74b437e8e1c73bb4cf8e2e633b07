@@ -1,0 +1,14 @@
+.editorconfig
+  h_220433a6faf6b8 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "3959d79cf84f74b437e8e1c73bb4cf8e2e633b07",
+  "prompts": {},
+  "humans": {
+    "h_220433a6faf6b8": {
+      "author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
