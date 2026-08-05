@@ -7,6 +7,10 @@ set -gx LC_ALL "en_US.UTF-8"
 set -gx GHQ_ROOT $HOME/ghq
 set -gx GHQ_SELECTOR fzf
 set -gx PIPENV_VENV_IN_PROJECT 1
+# Which interpreter `uv tool install` builds on when nothing asks for one.
+# Without this uv picks its only managed install, which is how tools ended up
+# scattered across 3.10 to 3.13. A project's .python-version still wins.
+set -gx UV_PYTHON "3.12"
 set -gx TODAY (date +"%Y/%m/%d")
 set -gx TZ "Asia/Tokyo"
 
