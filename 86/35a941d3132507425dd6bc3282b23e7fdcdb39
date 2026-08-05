@@ -1,0 +1,19 @@
+config/env_paths.fish
+  s_7e19058011e828::t_c698dd11765992 10-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "8635a941d3132507425dd6bc3282b23e7fdcdb39",
+  "prompts": {},
+  "sessions": {
+    "s_7e19058011e828": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c5a4a8e7-3505-4cdf-a435-c7a99208081f",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
