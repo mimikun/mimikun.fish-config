@@ -1,0 +1,14 @@
+config/env_paths.fish
+  h_220433a6faf6b8 235-238
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "56e229a8a72026f4cc5946cf90e9d11a24b674b3",
+  "prompts": {},
+  "humans": {
+    "h_220433a6faf6b8": {
+      "author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
