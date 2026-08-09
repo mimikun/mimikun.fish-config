@@ -232,7 +232,10 @@ fish_add_path --global $FLYCTL_INSTALL/bin
 
 # pnpm
 set -gx PNPM_HOME $XDG_DATA_HOME/pnpm
-fish_add_path --global "$PNPM_HOME"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  #fish_add_path --global "$PNPM_HOME"
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
 
 # cabal config
 fish_add_path --global $HOME/.cabal/bin
