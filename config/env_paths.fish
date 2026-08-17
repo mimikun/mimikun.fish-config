@@ -263,29 +263,6 @@ set -gx LUA_PATH "$HOME/.luarocks/share/lua/5.3/?.lua;$HOME/.luarocks/share/lua/
 
 set -gx LUA_CPATH "$HOME/.luarocks/lib/lua/5.3/?.so;./?.so;/usr/local/lib/lua/5.3/loadall.so;/usr/local/lib/lua/5.3/?.so"
 
-# aqua
-set -gx AQUA_ROOT_DIR "$XDG_DATA_HOME/aqua"
-set -gx AQUA_CONFIG_DIR "$XDG_CONFIG_HOME/aqua"
-set -gx AQUA_BIN "$AQUA_ROOT_DIR/bin"
-fish_add_path --global $AQUA_BIN
-
-set -gx AQUA_CONFIG "$AQUA_CONFIG_DIR/aqua.yaml"
-set -gx AQUA_GLOBAL_CONFIG $AQUA_CONFIG
-set -gx AQUA_POLICY_CONFIG "$AQUA_CONFIG_DIR/policy.yaml"
-set -gx AQUA_DISABLE_POLICY true
-set -gx AQUA_PROGRESS_BAR true
-if test "$HOST_NAME" = "wakamo"
-# Ryzen 7 9800X3D(8 Core 16 Thread)
-  set -gx AQUA_MAX_PARALLELISM 3
-else if test "$HOST_NAME" = "izuna"
-  # Ryzen 9 3900X(12 Core 24 Thread)
-  set -gx AQUA_MAX_PARALLELISM 5
-else
-  # Other
-  set -gx AQUA_MAX_PARALLELISM 1
-end
-#set -gx AQUA_GITHUB_TOKEN "{{ (rbwFields "dotfiles-chezmoi").aqua_github_token.value }}"
-
 # PHP composer
 set -gx COMPOSER_CONFIG_HOME $XDG_CONFIG_HOME/composer
 set -gx COMPOSER_BIN_DIR $COMPOSER_CONFIG_HOME/vendor/bin
