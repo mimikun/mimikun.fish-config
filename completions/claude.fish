@@ -1,6 +1,6 @@
 # fish completions for the claude CLI (Claude Code).
 #
-# Generated from claude 2.1.226 on 2026-08-08.
+# Generated from claude 2.1.233 on 2026-08-17.
 # Do not edit by hand - run `task gen-claude-completion` after `claude update`.
 
 complete -c claude -f
@@ -420,7 +420,7 @@ complete -c claude -n '__fish_claude_at "plugin"' -a 'prune' -d 'Remove auto-ins
 complete -c claude -n '__fish_claude_at "plugin"' -a 'tag' -d 'Create a {name}--v{version} git tag for a plugin release, validating that plugin.json and…'
 complete -c claude -n '__fish_claude_at "plugin"' -a 'uninstall' -d 'Uninstall an installed plugin'
 complete -c claude -n '__fish_claude_at "plugin"' -a 'update' -d 'Update a plugin to the latest version (restart required to apply)'
-complete -c claude -n '__fish_claude_at "plugin"' -a 'validate' -d 'Validate a plugin or marketplace manifest'
+complete -c claude -n '__fish_claude_at "plugin"' -a 'validate' -d 'Validate a plugin or marketplace manifest, or the skills, agents, and commands in a direc…'
 complete -c claude -n '__fish_claude_at "plugin"' -s h -l help -d 'Display help for command'
 
 # claude plugin details
@@ -459,7 +459,7 @@ complete -c claude -n '__fish_claude_at "plugin eval"' -l runs -d 'Override per-
 complete -c claude -n '__fish_claude_at "plugin eval"' -l scaffold -d 'Run each case\'s scaffold_script (runs author-supplied bash as you; off by default — only…'
 complete -c claude -n '__fish_claude_at "plugin eval"' -l tag -d 'Filter cases by tag (repeatable)' -r
 complete -c claude -n '__fish_claude_at "plugin eval"' -l threshold -d 'Exit 1 if any case score is below this threshold (default: 1.0)' -r
-complete -c claude -n '__fish_claude_at "plugin eval"' -l verbose -d 'Stream the trace as it runs'
+complete -c claude -n '__fish_claude_at "plugin eval"' -l verbose -d 'Log per-message trace events to the debug log (use --debug-file to read them)'
 
 # claude plugin eval init
 complete -c claude -n '__fish_claude_at "plugin eval init"' -l bare -d 'Write a blank template (prompt.md + graders/criteria.md) instead of running the interview'
@@ -478,6 +478,7 @@ complete -c claude -n '__fish_claude_at "plugin init"' -l with -d 'Also scaffold
 complete -c claude -n '__fish_claude_at "plugin install"' -l config -d 'Set a userConfig option declared in the plugin\'s manifest (repeatable). Values are valida…' -r -F
 complete -c claude -n '__fish_claude_at "plugin install"' -s h -l help -d 'Display help for command'
 complete -c claude -n '__fish_claude_at "plugin install"' -s s -l scope -d 'Installation scope: user, project, or local (default: "user")' -r
+complete -c claude -n '__fish_claude_at "plugin install"' -s y -l yes -d 'For a plugin installed by running a marketplace-declared command: accept the displayed co…'
 
 # claude plugin list
 complete -c claude -n '__fish_claude_at "plugin list"' -l available -d 'Include available plugins from marketplaces (requires --json)'
@@ -535,6 +536,7 @@ complete -c claude -n '__fish_claude_at "plugin uninstall"' -s y -l yes -d 'Skip
 complete -c claude -n '__fish_claude_at "plugin update"' -x -a '(__fish_claude_plugins)'
 complete -c claude -n '__fish_claude_at "plugin update"' -s h -l help -d 'Display help for command'
 complete -c claude -n '__fish_claude_at "plugin update"' -s s -l scope -d 'Installation scope: user, project, local, managed (default: user)' -r
+complete -c claude -n '__fish_claude_at "plugin update"' -s y -l yes -d 'For a plugin installed by running a marketplace-declared command: accept a changed comman…'
 
 # claude plugin validate
 complete -c claude -n '__fish_claude_at "plugin validate"' -s h -l help -d 'Display help for command'
@@ -557,6 +559,8 @@ complete -c claude -n '__fish_claude_at "setup-token"' -s h -l help -d 'Display 
 # claude ultrareview
 complete -c claude -n '__fish_claude_at "ultrareview"' -s h -l help -d 'Display help for command'
 complete -c claude -n '__fish_claude_at "ultrareview"' -l json -d 'Print the raw bugs.json payload instead of formatted findings'
+complete -c claude -n '__fish_claude_at "ultrareview"' -l no-post -d 'Do not post the findings to the PR (the default; accepted for parity with the /ultrarevie…'
+complete -c claude -n '__fish_claude_at "ultrareview"' -l post -d 'Post the finished review\'s findings to the PR as you (PR targets only; one plain comment,…'
 complete -c claude -n '__fish_claude_at "ultrareview"' -l timeout -d 'Maximum minutes to wait for the review to finish (default: 30)' -r
 
 # claude update
