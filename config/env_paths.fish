@@ -157,11 +157,14 @@ if string match -qr '^/mnt/' -- $PATH
   set -gx PATH $pruned
 end
 
-# System dirs: append so they stay behind user tool dirs (already in the
-# inherited login PATH; fish_add_path skips missing dirs and de-duplicates).
-fish_add_path --global --append /usr/bin
-fish_add_path --global --append /usr/local/bin
-fish_add_path --global --append /usr/local/sbin
+# System dirs are deliberately NOT added here. --append puts them at the end of
+# $fish_user_paths, but fish always places the whole of $fish_user_paths ahead
+# of $PATH, so appending still promotes them past every runtime that reaches
+# $PATH directly -- mise adds its directories in hook-env and never touches
+# $fish_user_paths, so it could not win no matter what order these files run in.
+# /usr/bin, /usr/local/bin and /usr/local/sbin are already in the inherited
+# login PATH (the comment that used to sit here said so), so dropping them
+# changes nothing but their rank.
 # User tool dirs: prepend (later calls win, matching the previous ordering).
 fish_add_path --global $HOME/go/bin
 fish_add_path --global $HOME/.cargo/bin
@@ -207,8 +210,10 @@ if test "$USE_NVIM_VERSION_MANAGER" = "nvs"
   fish_add_path --global "$NVS_BIN_DIR"
 end
 
-# System dirs (append; kept for hosts where they are not in the login PATH).
-fish_add_path --global --append /bin /usr/games /usr/sbin /usr/local/games /sbin /snap/bin /usr/local/go/bin
+# Same as above: /bin /usr/games /usr/sbin /usr/local/games /sbin /snap/bin
+# /usr/local/go/bin are inherited, and adding them here only promoted them.
+# This was the second of the two places doing it; removing only the first one
+# left /bin winning, which read as "the fix did not work".
 # User tool dirs. (.local/bin already added above; the duplicate is dropped.)
 fish_add_path --global $HOME/.fzf/bin
 fish_add_path --global $HOME/.npm-global/bin
