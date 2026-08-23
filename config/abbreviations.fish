@@ -98,6 +98,12 @@ if status is-interactive
     abbr --add zel zellij
   end
 
+  # git abbrs
+  if command -q git
+    abbr --add gwip 'git commit --all --no-verify --message wip'
+    abbr --add gw 'git commit --all --no-verify --message wip'
+  end
+
   # git subcommands
   if command -q git
     abbr --add --command git ls 'ls-files'
