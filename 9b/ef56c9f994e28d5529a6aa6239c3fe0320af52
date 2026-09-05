@@ -1,0 +1,38 @@
+completions/atuin.fish
+  h_220433a6faf6b8 55-56,74-75,79,415-417,426,445-477,533
+completions/claude.fish
+  h_220433a6faf6b8 3,60-61,74-75,82-85,88-89,193,200,204-205,207,220,260-261,271,279-280,308,313-314,376-377,381,396,477,571,585-588,592-593,599
+completions/deno.fish
+  h_220433a6faf6b8 1,3-153,156-1404,1406-1410
+completions/fnox.fish
+  h_220433a6faf6b8 1,3-66,69-71
+completions/herdr.fish
+  h_220433a6faf6b8 99,108,116,119,197-198
+completions/mise.fish
+  h_220433a6faf6b8 1,3-66,69-71
+completions/moon.fish
+  h_220433a6faf6b8 1-688
+completions/pixi.fish
+  h_220433a6faf6b8 69,101,152,307,357,364,372,379,2457,2471,2639-2660,2812-2829,2876,2904,2953
+completions/rustup.fish
+  h_220433a6faf6b8 3,7-17,21-24,61,85,173,203,212,221,265
+completions/task.fish
+  h_220433a6faf6b8 8,19
+completions/ty.fish
+  h_220433a6faf6b8 79
+completions/uv.fish
+  h_220433a6faf6b8 349-350,594-595,711-712,823-824,934-935,1101-1102,1246-1247,1373-1374,1569-1570,1634,1637,1689-1690,1879-1880,2085-2086,2293-2294,2534-2535,3281-3282,3518-3519,3722-3723,4039-4040,4154-4155,4351-4352,4428-4429,4624-4625
+completions/zellij.fish
+  h_220433a6faf6b8 1-1501,1505-1511,1542
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "9bef56c9f994e28d5529a6aa6239c3fe0320af52",
+  "prompts": {},
+  "humans": {
+    "h_220433a6faf6b8": {
+      "author": "Yuto Tanaka <git@mimikun.dev>"
+    }
+  }
+}
