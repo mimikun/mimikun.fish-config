@@ -1,6 +1,6 @@
 # fish completions for the claude CLI (Claude Code).
 #
-# Generated from claude 2.1.239 on 2026-08-22.
+# Generated from claude 2.1.259 on 2026-09-03.
 # Do not edit by hand - run `task gen-claude-completion` after `claude update`.
 
 complete -c claude -f
@@ -57,6 +57,8 @@ function __fish_claude_child -d 'Resolve a token to a canonical subcommand path'
             switch "$argv[2]"
                 case 'agents'
                     echo 'agents'
+                case 'attach'
+                    echo 'attach'
                 case 'auth'
                     echo 'auth'
                 case 'auto-mode'
@@ -69,14 +71,22 @@ function __fish_claude_child -d 'Resolve a token to a canonical subcommand path'
                     echo 'import'
                 case 'install'
                     echo 'install'
+                case 'logs'
+                    echo 'logs'
                 case 'mcp'
                     echo 'mcp'
                 case 'plugin' 'plugins'
                     echo 'plugin'
                 case 'project'
                     echo 'project'
+                case 'respawn'
+                    echo 'respawn'
+                case 'rm'
+                    echo 'rm'
                 case 'setup-token'
                     echo 'setup-token'
+                case 'stop' 'kill'
+                    echo 'stop'
                 case 'ultrareview'
                     echo 'ultrareview'
                 case 'update' 'upgrade'
@@ -180,16 +190,21 @@ end
 
 # claude
 complete -c claude -n '__fish_claude_at ""' -a 'agents' -d 'Manage background agents'
+complete -c claude -n '__fish_claude_at ""' -a 'attach' -d 'Open a background session in this terminal. <id> is the short id that `claude --bg` print…'
 complete -c claude -n '__fish_claude_at ""' -a 'auth' -d 'Manage authentication'
 complete -c claude -n '__fish_claude_at ""' -a 'auto-mode' -d 'Inspect or reset auto mode classifier configuration'
 complete -c claude -n '__fish_claude_at ""' -a 'doctor' -d 'Check the health of your Claude Code installation. Reads settings files in the current di…'
 complete -c claude -n '__fish_claude_at ""' -a 'gateway' -d 'Run the enterprise auth/telemetry gateway'
 complete -c claude -n '__fish_claude_at ""' -a 'import' -d 'Import config from another AI coding agent into Claude Code'
 complete -c claude -n '__fish_claude_at ""' -a 'install' -d 'Install Claude Code native build. Use [target] to specify version (stable, latest, or spe…'
+complete -c claude -n '__fish_claude_at ""' -a 'logs' -d 'Print a background session\'s recent terminal output'
 complete -c claude -n '__fish_claude_at ""' -a 'mcp' -d 'Configure and manage MCP servers'
 complete -c claude -n '__fish_claude_at ""' -a 'plugin' -d 'Manage Claude Code plugins'
 complete -c claude -n '__fish_claude_at ""' -a 'project' -d 'Manage Claude Code project state'
+complete -c claude -n '__fish_claude_at ""' -a 'respawn' -d 'Restart a background session, or all of them with --all, so it runs the current Claude Co…'
+complete -c claude -n '__fish_claude_at ""' -a 'rm' -d 'Delete a background session, and its worktree when that is safe. Works on sessions that h…'
 complete -c claude -n '__fish_claude_at ""' -a 'setup-token' -d 'Set up a long-lived authentication token (requires Claude subscription)'
+complete -c claude -n '__fish_claude_at ""' -a 'stop' -d 'Stop a background session. Its conversation is kept: `claude attach <id>` opens it again,…'
 complete -c claude -n '__fish_claude_at ""' -a 'ultrareview' -d 'Run a cloud-hosted multi-agent code review of the current branch (or a PR number / base b…'
 complete -c claude -n '__fish_claude_at ""' -a 'update' -d 'Check for updates and install if available'
 complete -c claude -n '__fish_claude_at ""' -l add-dir -x -a '(__fish_complete_directories)'
@@ -202,7 +217,7 @@ complete -c claude -n '__fish_claude_at ""' -l allowedTools -l allowed-tools -d 
 complete -c claude -n '__fish_claude_at ""' -l append-system-prompt -d 'Append a system prompt to the default system prompt' -r
 complete -c claude -n '__fish_claude_at ""' -l autocompact -d 'Auto-compact window size (auto, or 100k–1M tokens)' -r
 complete -c claude -n '__fish_claude_at ""' -l ax-screen-reader -d 'Render screen-reader friendly output (flat text, no decorative borders or animations).'
-complete -c claude -n '__fish_claude_at ""' -l bg -l background -d 'Start the session as a background agent and return immediately (manage with `claude agent…'
+complete -c claude -n '__fish_claude_at ""' -l bg -l background -d 'Start the session in the background and return immediately. Prints the id that `claude at…'
 complete -c claude -n '__fish_claude_at ""' -l bare -d 'Minimal mode: skip hooks, LSP, plugin sync, attribution, auto-memory, background prefetch…'
 complete -c claude -n '__fish_claude_at ""' -l betas -d 'Beta headers to include in API requests (API key users only)' -r
 complete -c claude -n '__fish_claude_at ""' -l brief -d 'Enable SendUserMessage tool for agent-to-user communication'
@@ -242,6 +257,8 @@ complete -c claude -n '__fish_claude_at ""' -l output-format -x -a 'text json st
 complete -c claude -n '__fish_claude_at ""' -l output-format -d 'Output format (only works with --print): "text" (default), "json" (single result), or "st…' -x
 complete -c claude -n '__fish_claude_at ""' -l permission-mode -x -a 'acceptEdits auto bypassPermissions manual dontAsk plan'
 complete -c claude -n '__fish_claude_at ""' -l permission-mode -d 'Permission mode to use for the session (choices: "acceptEdits", "auto", "bypassPermission…' -x
+complete -c claude -n '__fish_claude_at ""' -l permission-prompts -x -a 'host none'
+complete -c claude -n '__fish_claude_at ""' -l permission-prompts -d 'Who answers permission prompts with --print: "host" (the SDK host or --permission-prompt-…' -x
 complete -c claude -n '__fish_claude_at ""' -l plugin-dir -x -a '(__fish_complete_directories)'
 complete -c claude -n '__fish_claude_at ""' -l plugin-dir -d 'Load a plugin from a directory or .zip for this session only (repeatable: --plugin-dir A…' -x
 complete -c claude -n '__fish_claude_at ""' -l plugin-url -d 'Fetch a plugin .zip from a URL for this session only (repeatable: --plugin-url A --plugin…' -r
@@ -251,6 +268,7 @@ complete -c claude -n '__fish_claude_at ""' -l prompt-suggestions -d 'Enable pro
 complete -c claude -n '__fish_claude_at ""' -l remote-control -d 'Start an interactive session with Remote Control enabled (optionally named)'
 complete -c claude -n '__fish_claude_at ""' -l remote-control-session-name-prefix -d 'Prefix for auto-generated Remote Control session names (default: hostname)' -r
 complete -c claude -n '__fish_claude_at ""' -l replay-user-messages -d 'Re-emit user messages from stdin back on stdout for acknowledgment (only works with --inp…'
+complete -c claude -n '__fish_claude_at ""' -l restricted -d 'Restricted mode: removes the built-in tools that run commands or code (Bash, PowerShell,…'
 complete -c claude -n '__fish_claude_at ""' -s r -l resume -d 'Resume a conversation by session ID, or open interactive picker with optional search term'
 complete -c claude -n '__fish_claude_at ""' -l safe-mode -d 'Start with all customizations (CLAUDE.md, skills, plugins, hooks, MCP servers, custom com…'
 complete -c claude -n '__fish_claude_at ""' -l session-id -d 'Use a specific session ID for the conversation (must be a valid UUID)' -r
@@ -258,6 +276,8 @@ complete -c claude -n '__fish_claude_at ""' -l setting-sources -d 'Comma-separat
 complete -c claude -n '__fish_claude_at ""' -l settings -d 'Path to a settings JSON file or a JSON string to load additional settings from' -r -F
 complete -c claude -n '__fish_claude_at ""' -l strict-mcp-config -d 'Only use MCP servers from --mcp-config, ignoring all other MCP configurations'
 complete -c claude -n '__fish_claude_at ""' -l system-prompt -d 'System prompt to use for the session' -r
+complete -c claude -n '__fish_claude_at ""' -l system-prompt-snapshot -x -a 'on off'
+complete -c claude -n '__fish_claude_at ""' -l system-prompt-snapshot -d 'Record the system prompt once per conversation and reuse it verbatim on every request and…' -x
 complete -c claude -n '__fish_claude_at ""' -l teleport -d 'Resume a teleport session, optionally specify session ID'
 complete -c claude -n '__fish_claude_at ""' -l tmux -d 'Create a tmux session for the worktree (requires --worktree). Uses iTerm2 native panes wh…'
 complete -c claude -n '__fish_claude_at ""' -l tools -d 'Specify the list of available tools from the built-in set. Use "" to disable all tools, "…' -r
@@ -285,9 +305,12 @@ complete -c claude -n '__fish_claude_at "agents"' -l model -d 'Default model for
 complete -c claude -n '__fish_claude_at "agents"' -l permission-mode -d 'Default permission mode for sessions dispatched from agent view' -r
 complete -c claude -n '__fish_claude_at "agents"' -l plugin-dir -x -a '(__fish_complete_directories)'
 complete -c claude -n '__fish_claude_at "agents"' -l plugin-dir -d 'Load plugins from specified directory for the agent view and dispatched sessions (repeata…' -x
+complete -c claude -n '__fish_claude_at "agents"' -l restricted -d 'Start dispatched sessions in restricted mode'
 complete -c claude -n '__fish_claude_at "agents"' -l setting-sources -d 'Comma-separated list of setting sources to load (user, project, local).' -r
 complete -c claude -n '__fish_claude_at "agents"' -l settings -d 'Settings file or JSON string to apply to the agent view and dispatched sessions' -r -F
 complete -c claude -n '__fish_claude_at "agents"' -l strict-mcp-config -d 'Only use MCP servers from --mcp-config in dispatched sessions'
+
+# claude attach
 
 # claude auth
 complete -c claude -n '__fish_claude_at "auth"' -a 'login' -d 'Sign in to your Anthropic account'
@@ -350,10 +373,12 @@ complete -c claude -n '__fish_claude_at "install"' -x -a 'stable latest'
 complete -c claude -n '__fish_claude_at "install"' -l force -d 'Force installation even if already installed'
 complete -c claude -n '__fish_claude_at "install"' -s h -l help -d 'Display help for command'
 
+# claude logs
+
 # claude mcp
 complete -c claude -n '__fish_claude_at "mcp"' -a 'add' -d 'Add an MCP server to Claude Code.'
 complete -c claude -n '__fish_claude_at "mcp"' -a 'add-from-claude-desktop' -d 'Import MCP servers from Claude Desktop (Mac and WSL only)'
-complete -c claude -n '__fish_claude_at "mcp"' -a 'add-json' -d 'Add an MCP server (stdio or SSE) with a JSON string'
+complete -c claude -n '__fish_claude_at "mcp"' -a 'add-json' -d 'Add an MCP server (stdio, SSE, HTTP, or WebSocket) with a JSON string'
 complete -c claude -n '__fish_claude_at "mcp"' -a 'get' -d 'Get details about an MCP server. Unapproved .mcp.json servers are shown as ⏸ Pending appr…'
 complete -c claude -n '__fish_claude_at "mcp"' -a 'list' -d 'List configured MCP servers. Unapproved .mcp.json servers are shown as ⏸ Pending approval…'
 complete -c claude -n '__fish_claude_at "mcp"' -a 'login' -d 'Authenticate with an MCP server (HTTP, SSE, or claude.ai connector)'
@@ -368,7 +393,7 @@ complete -c claude -n '__fish_claude_at "mcp add"' -l callback-port -d 'Fixed po
 complete -c claude -n '__fish_claude_at "mcp add"' -l client-id -d 'OAuth client ID for HTTP/SSE servers' -r
 complete -c claude -n '__fish_claude_at "mcp add"' -l client-secret -d 'Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)'
 complete -c claude -n '__fish_claude_at "mcp add"' -s e -l env -d 'Set environment variables (e.g. -e KEY=value)' -r
-complete -c claude -n '__fish_claude_at "mcp add"' -s H -l header -d 'Set WebSocket headers (e.g. -H "X-Api-Key: abc123" -H "X-Custom: value")' -r
+complete -c claude -n '__fish_claude_at "mcp add"' -s H -l header -d 'Set headers for HTTP/SSE servers (e.g. -H "X-Api-Key: abc123" -H "X-Custom: value")' -r
 complete -c claude -n '__fish_claude_at "mcp add"' -s h -l help -d 'Display help for command'
 complete -c claude -n '__fish_claude_at "mcp add"' -s s -l scope -d 'Configuration scope (local, user, or project) (default: "local")' -r
 complete -c claude -n '__fish_claude_at "mcp add"' -s t -l transport -d 'Transport type (stdio, sse, http). Defaults to stdio if not specified.' -r
@@ -449,6 +474,7 @@ complete -c claude -n '__fish_claude_at "plugin eval"' -l json -d 'Print the ful
 complete -c claude -n '__fish_claude_at "plugin eval"' -l judge-model -d 'Override LLM-grader model (default: haiku)' -r
 complete -c claude -n '__fish_claude_at "plugin eval"' -l keep-temp -d 'Preserve scaffold dirs for debugging'
 complete -c claude -n '__fish_claude_at "plugin eval"' -l max-cost-usd -d 'Optional hard cost ceiling; abort and report partial results if hit (exit 2). Overrun is…' -r
+complete -c claude -n '__fish_claude_at "plugin eval"' -l mocks -d 'Mock stand-ins for MCP servers, from <eval dir>/mocks/ (record | off; default: record — o…' -r
 complete -c claude -n '__fish_claude_at "plugin eval"' -l model -x -a 'fable opus sonnet haiku claude-fable-5 claude-opus-5 claude-sonnet-5 claude-haiku-4-5-20251001'
 complete -c claude -n '__fish_claude_at "plugin eval"' -l model -d 'Override model for all cases' -x
 complete -c claude -n '__fish_claude_at "plugin eval"' -l no-publish -d 'Keep the HTML report local only; skip publishing it to claude.ai'
@@ -542,6 +568,7 @@ complete -c claude -n '__fish_claude_at "plugin update"' -s y -l yes -d 'Accept 
 
 # claude plugin validate
 complete -c claude -n '__fish_claude_at "plugin validate"' -s h -l help -d 'Display help for command'
+complete -c claude -n '__fish_claude_at "plugin validate"' -l json -d 'Output the validation report as JSON (same exit codes)'
 complete -c claude -n '__fish_claude_at "plugin validate"' -l strict -d 'Treat warnings as errors (exit 1). Use in CI to fail on unrecognized fields, missing meta…'
 
 # claude project
@@ -555,15 +582,21 @@ complete -c claude -n '__fish_claude_at "project purge"' -s h -l help -d 'Displa
 complete -c claude -n '__fish_claude_at "project purge"' -s i -l interactive -d 'Prompt for each item before deleting'
 complete -c claude -n '__fish_claude_at "project purge"' -s y -l yes -d 'Skip confirmation prompt'
 
+# claude respawn
+
+# claude rm
+
 # claude setup-token
 complete -c claude -n '__fish_claude_at "setup-token"' -s h -l help -d 'Display help for command'
+
+# claude stop
 
 # claude ultrareview
 complete -c claude -n '__fish_claude_at "ultrareview"' -s h -l help -d 'Display help for command'
 complete -c claude -n '__fish_claude_at "ultrareview"' -l json -d 'Print the raw bugs.json payload instead of formatted findings'
 complete -c claude -n '__fish_claude_at "ultrareview"' -l no-post -d 'Do not post the findings to the PR (the default; accepted for parity with the /ultrarevie…'
 complete -c claude -n '__fish_claude_at "ultrareview"' -l post -d 'Post the finished review\'s findings to the PR as you (PR targets only; one plain comment,…'
-complete -c claude -n '__fish_claude_at "ultrareview"' -l timeout -d 'Maximum minutes to wait for the review to finish (default: 30)' -r
+complete -c claude -n '__fish_claude_at "ultrareview"' -l timeout -d 'Maximum minutes to wait for the review to finish (default: 45)' -r
 
 # claude update
 complete -c claude -n '__fish_claude_at "update"' -s h -l help -d 'Display help for command'
